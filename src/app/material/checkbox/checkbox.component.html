@@ -1,0 +1,59 @@
+<md-card>
+  <md-card-title>Checkbox</md-card-title>
+  <md-card-subtitle>md-checkbox is a Material Design selection control that allows users to make a binary choice for a predetermined conditioned</md-card-subtitle>
+  <md-card-content>
+    <form class="mb-1">
+      <md-checkbox [(ngModel)]="isChecked"
+        name="cb"
+        color="checkboxColor()"
+        (change)="isIndeterminate = false"
+        [indeterminate]="isIndeterminate"
+        [disabled]="isDisabled"
+        [align]="alignment">
+        Do you want to <em>foobar</em> the <em>bazquux</em>?
+      </md-checkbox> - <strong>{{printResult()}}</strong>
+    </form>
+
+    <div  fxLayout="row"  fxLayoutAlign="start center" class="mb-1">
+      <div>
+        <input id="indeterminate-toggle"
+          type="checkbox"
+         [(ngModel)]="isIndeterminate"
+         [disabled]="isDisabled">
+        <label for="indeterminate-toggle" class="mr-xs">Toggle Indeterminate</label>
+      </div>
+      <div>
+        <input id="disabled-toggle" type="checkbox" [(ngModel)]="isDisabled">
+        <label for="disabled-toggle" class="mr-xs">Toggle Disabled</label>
+      </div>
+      <div>
+        <input id="color-toggle" type="checkbox" [(ngModel)]="useAlternativeColor">
+        <label for="color-toggle">Toggle Color</label>
+      </div>
+    </div>
+
+    <div  fxLayout="row"  fxLayoutAlign="start center" class="mb-1">
+      <p class="mr-xs">Alignment:</p>
+      <div class="mr-xs">
+        <input #start type="radio"
+          value="start"
+          id="align-start"
+          name="alignment"
+          (click)="alignment = start.value"
+          checked>
+        <label for="align-start">Start</label>
+      </div>
+      <div>
+        <input #end type="radio"
+          value="end"
+          id="align-end"
+          name="alignment"
+          (click)="alignment = end.value">
+        <label for="align-end">End</label>
+      </div>
+    </div>
+
+    <p>Nested Checklist</p>
+    <app-md-checkbox-demo-nested-checklist></app-md-checkbox-demo-nested-checklist>
+  </md-card-content>
+</md-card>

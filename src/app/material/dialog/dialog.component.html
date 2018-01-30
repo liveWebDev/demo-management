@@ -1,0 +1,36 @@
+<md-card class="demo-dialog-card">
+  <md-card-title>Dialog</md-card-title>
+  <md-card-subtitle>MdDialog is a service, which opens dialogs components in the view.</md-card-subtitle>
+  <md-card-content>
+    <button md-raised-button color="primary" (click)="open()" [disabled]="dialogRef">Open dialog</button>
+
+    <p>Dialog dimensions</p>
+    <md-input-container style="width: 100%">
+      <input mdInput [(ngModel)]="config.width" placeholder="Width">
+    </md-input-container>
+    <md-input-container style="width: 100%">
+      <input mdInput [(ngModel)]="config.height" placeholder="Height">
+    </md-input-container>
+    
+    <p>Dialog position</p>
+
+    <md-input-container style="width: 100%">
+      <input mdInput [(ngModel)]="config.position.top" (change)="config.position.bottom = ''" placeholder="Top">
+    </md-input-container>
+    <md-input-container style="width: 100%">
+      <input mdInput [(ngModel)]="config.position.bottom" (change)="config.position.top = ''" placeholder="Bottom">
+    </md-input-container>
+
+    <md-input-container style="width: 100%">
+      <input mdInput [(ngModel)]="config.position.left" (change)="config.position.right = ''" placeholder="Left">
+    </md-input-container>
+    <md-input-container style="width: 100%">
+      <input mdInput [(ngModel)]="config.position.right" (change)="config.position.left = ''" placeholder="Right">
+    </md-input-container>
+
+    <p>Other options</p>
+    <md-checkbox [(ngModel)]="config.disableClose">Disable close</md-checkbox>
+
+    <p>Last close result: {{lastCloseResult}}</p>
+  </md-card-content>
+</md-card>

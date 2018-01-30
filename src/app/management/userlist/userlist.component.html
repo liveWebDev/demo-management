@@ -1,0 +1,25 @@
+<ngx-datatable
+  class="material"
+  [rows]="rows"
+  [columnMode]="'force'"
+  [headerHeight]="50"
+  [footerHeight]="50"
+  [rowHeight]="'auto'"
+  [externalPaging]="true"
+  [count]="count"
+  [offset]="offset"
+  [limit]="limit"
+  (page)='onPage($event)'>
+  <ngx-datatable-column name="Last Name" prop="last_name"></ngx-datatable-column>
+  <ngx-datatable-column name="First Name" prop="first_name"></ngx-datatable-column>
+  <ngx-datatable-column name="SBU" prop="sbu"></ngx-datatable-column>
+  <ngx-datatable-column name="Actions" sortable="false" prop="id">
+    <ng-template let-column="column" ngx-datatable-header-template>
+        Actions
+    </ng-template>
+    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+        <button md-raised-button md-button-sm color="primary" class="mr-1" (click)="onDetail(row)">Edit</button>
+        <button md-raised-button md-button-sm disabled class="mr-1" (click)="onDelete(row)">Off</button>
+    </ng-template>
+  </ngx-datatable-column>
+</ngx-datatable>

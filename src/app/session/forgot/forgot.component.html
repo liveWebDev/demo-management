@@ -1,0 +1,28 @@
+<div class="session mat-indigo">
+  <div class="session-content">
+    <div class="session-wrapper">
+      <md-card>
+        <md-card-content>
+          <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="text-xs-center pb-1">
+              <img src="assets/images/logo-dark.png" alt=""/>
+            </div>
+            <div  fxLayout="column"  fxLayoutAlign="space-around">
+              <div class="pb-1">
+                <md-input-container style="width: 100%">
+                  <input mdInput placeholder="Email address" type="email" [formControl]="form.controls['email']">
+                </md-input-container>
+                <small *ngIf="form.controls['email'].hasError('required') && form.controls['email'].touched" class="mat-text-warn">You must include an email address.</small>
+                <small *ngIf="form.controls['email'].errors?.email && form.controls['email'].touched" class="mat-text-warn">You must include a valid email address.</small>
+              </div>
+              <button md-raised-button color="primary" type="submit" [disabled]="!form.valid">Login</button>
+            </div>
+            <div class="pt-1 pb-1 text-xs-center">
+              <a [routerLink]="['/session/signin']">Access your account</a>&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+          </form>
+         </md-card-content>
+      </md-card>
+    </div>
+  </div>
+</div>

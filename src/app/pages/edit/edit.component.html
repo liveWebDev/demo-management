@@ -1,0 +1,88 @@
+<md-toolbar color="primary">
+  <md-toolbar-row>   
+  </md-toolbar-row>
+</md-toolbar>
+
+<div  fxLayout="row"  fxLayoutWrap="wrap"  fxLayoutAlign="center start">
+  <div fxFlex.gt-sm="55" fxFlex="100">
+    <md-card class="mat-card-top">
+      <md-tab-group>
+        <md-tab>
+          <ng-template md-tab-label>General</ng-template>
+          <md-card-content>
+            <form  fxLayout="column">
+              
+              <md-input-container class="mb-1">
+                <input mdInput placeholder="First name">
+              </md-input-container>
+
+              <md-input-container class="mb-1">
+                <input mdInput placeholder="Last name">
+              </md-input-container>
+
+              <md-input-container class="mb-1">
+                <input mdInput placeholder="Company">
+              </md-input-container>
+
+              <md-input-container class="mb-1">
+                <input mdInput placeholder="Email address">
+              </md-input-container>
+
+              <md-select placeholder="Timezone" class="mb-1">
+                <md-option value="Hawaii">(GMT-10:00) Hawaii</md-option>
+                <md-option value="Alaska">(GMT-09:00) Alaska</md-option>
+                <md-option value="Pacific Time (US & Canada)">(GMT-08:00) Pacific Time (US & Canada)</md-option>
+                <md-option value="Arizona">(GMT-07:00) Arizona</md-option>
+                <md-option value="Mountain Time (US & Canada)">(GMT-07:00) Mountain Time (US & Canada)</md-option>
+                <md-option value="Central Time (US & Canada)" selected="selected">(GMT-06:00) Central Time (US & Canada)</md-option>
+                <md-option value="Eastern Time (US & Canada)">(GMT-05:00) Eastern Time (US & Canada)</md-option>
+                <md-option value="Indiana (East)">(GMT-05:00) Indiana (East)</md-option>
+              </md-select>
+
+              <md-input-container class="mb-1">
+                <input mdInput placeholder="Username">
+              </md-input-container>
+
+            </form>
+          </md-card-content>
+        </md-tab>
+        <md-tab>
+          <ng-template md-tab-label>Security</ng-template>
+          <md-card-content>
+            <form fxLayout="column">
+      
+              <md-input-container class="mb-1">
+                <input mdInput placeholder="Old password" type="password">
+              </md-input-container>
+
+              <md-input-container class="mb-1">
+                <input mdInput placeholder="New password" type="password">
+              </md-input-container>
+
+              <md-input-container class="mb-1">
+                <input mdInput placeholder="Confirm new password" type="password">
+              </md-input-container>
+
+            </form>
+          </md-card-content>
+        </md-tab>
+        <md-tab>
+          <ng-template md-tab-label>Preferances</ng-template>
+          <md-card-content>
+            <md-list>
+              <md-list-item *ngFor="let system of systems">
+                <span fxFlex>{{system.name}}</span>
+                <md-slide-toggle [(ngModel)]="system.on"></md-slide-toggle>
+              </md-list-item>
+            </md-list>
+          </md-card-content>
+        </md-tab>
+      </md-tab-group>
+      <hr>
+      <md-card-actions>
+        <button md-raised-button class="shadow-none">Save</button>
+        <button md-raised-button color="primary">Cancel</button>
+      </md-card-actions>
+    </md-card>
+  </div>
+</div>

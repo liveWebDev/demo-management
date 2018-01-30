@@ -1,0 +1,414 @@
+<div fxLayout="row"  fxLayoutWrap="wrap">
+  <div fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100">
+    <md-card class="card-widget">
+      <div md-card-widget>
+        <button md-mini-fab color="primary" md-card-icon class="shadow-none">
+          <md-icon>local_offer</md-icon>
+        </button>
+        <div class="pl-1 pr-1">
+          <h5 md-card-widget-title>103</h5>
+          <p class="mat-text-muted text-md">Campaigns</p>
+        </div>
+      </div>
+    </md-card>
+  </div>
+  <div fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100">
+    <md-card class="card-widget">
+      <div md-card-widget>
+        <button md-mini-fab disabled="" md-card-icon class="shadow-none">
+          <md-icon>phone</md-icon>
+        </button>
+        <div class="pl-1 pr-1">
+          <h5 md-card-widget-title>230</h5>
+          <p class="mat-text-muted text-md">Customers</p>
+        </div>
+      </div>
+    </md-card>
+  </div>
+  <div fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100">
+    <md-card class="card-widget">
+      <div md-card-widget>
+        <button md-mini-fab color="warn" md-card-icon class="shadow-none">
+          <md-icon>notifications</md-icon>
+        </button>
+        <div class="pl-1 pr-1">
+          <h5 md-card-widget-title>323</h5>
+          <p class="mat-text-muted text-md">Queries</p>
+        </div>
+      </div>
+    </md-card>
+  </div>
+  <div fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100">
+    <md-card class="card-widget">
+      <div md-card-widget>
+        <button md-mini-fab md-card-icon class="shadow-none">
+          <md-icon>email</md-icon>
+        </button>
+        <div class="pl-1 pr-1">
+          <h5 md-card-widget-title>870</h5>
+          <p class="mat-text-muted text-md">Opens</p>
+        </div>
+      </div>
+    </md-card>
+  </div>
+</div>
+
+<div fxLayout="row" fxLayoutWrap="wrap">
+  <div fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100">
+    <md-card class="card-widget mat-teal">
+      <div md-card-widget>
+        <div md-card-float-icon>
+          <md-icon>local_offer</md-icon>
+        </div>
+        <div class="pl-0">
+          <h5 md-card-widget-title>103</h5>
+          <p>Campaigns</p>
+        </div>
+      </div>
+    </md-card>
+  </div>
+  <div fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100">
+    <md-card class="card-widget mat-purple">
+      <div md-card-widget>
+        <div md-card-float-icon>
+          <md-icon>phone</md-icon>
+        </div>
+        <div class="pl-0">
+          <h5 md-card-widget-title>230</h5>
+          <p>Customers</p>
+        </div>
+      </div>
+    </md-card>
+  </div>
+  <div fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100">
+    <md-card class="card-widget mat-red">
+      <div md-card-widget>
+        <div md-card-float-icon>
+          <md-icon>notifications</md-icon>
+        </div>
+        <div class="pl-0">
+          <h5 md-card-widget-title>323</h5>
+          <p>Queries</p>
+        </div>
+      </div>
+    </md-card>
+  </div>
+  <div fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100">
+    <md-card class="card-widget mat-indigo">
+      <div md-card-widget>
+        <div md-card-float-icon>
+          <md-icon>email</md-icon>
+        </div>
+        <div class="pl-0">
+          <h5 md-card-widget-title>870</h5>
+          <p>Opens</p>
+        </div>
+      </div>
+    </md-card>
+  </div>
+</div>
+
+<div fxLayout="row"  fxLayoutWrap="wrap">
+  <div fxFlex.gt-sm="33.33%" fxFlex.gt-xs="100" fxFlex="100">
+    <md-card>
+      <md-card-title>Newsfeed</md-card-title>
+      <md-card-subtitle>Stories posted today</md-card-subtitle>
+      <hr>
+      <md-list>
+        <ng-template let-item let-last="last" ngFor [ngForOf]="messages">
+          <md-list-item>
+            <img md-list-avatar src="{{item.photo}}" alt="">
+            <h3 md-line> {{item.from}} </h3>
+            <p md-line> {{item.subject}} - {{item.message}} </p>
+          </md-list-item>
+        </ng-template>
+      </md-list>
+    </md-card>
+  </div>
+  <div fxFlex.gt-sm="33.33%" fxFlex.gt-xs="50" fxFlex="100">
+    <md-card>
+      <div class="card-image-header" style="background-image: url(assets/images/unsplash/1.jpg); height: 225px;"></div>
+      <md-card-content class="text-xs-center">
+        <div fxLayout="row"  fxLayoutWrap="wrap" class="text-uppercase">
+          <div fxFlex="33.33%">
+            <h5 class="mt-0 mb-0">24</h5>
+            <p class="mt-0 mb-0 text-md mat-text-muted">Comments</p>
+          </div>
+          <div fxFlex="33.33%">
+            <h5 class="mt-0 mb-0">45</h5>
+            <p class="mt-0 mb-0 text-md mat-text-muted">Likes</p>
+          </div>
+          <div fxFlex="33.33%">
+            <h5 class="mt-0 mb-0">984</h5>
+            <p class="mt-0 mb-0 text-md mat-text-muted">Shares</p>
+          </div>
+        </div>
+      </md-card-content>
+    </md-card>
+  </div>
+  <div fxFlex.gt-sm="33.33%" fxFlex.gt-xs="50" fxFlex="100">
+    <md-card>
+      <md-card-content class="text-xs-center">
+        <div fxLayout="row"  fxLayoutAlign="center center" class="mt-1">
+          <div fxFlex>
+            <button md-icon-button>
+              <md-icon>email</md-icon>
+            </button>
+          </div>
+          <div fxFlex>
+            <img src="assets/images/face1.jpg" class="radius-circle">
+          </div>
+          <div fxFlex>
+            <button md-icon-button>
+              <md-icon>phone</md-icon>
+            </button>
+          </div>
+        </div>
+        <p class="mb-1">
+          <a href="" class="block text-lg">Michael Obrien</a>
+          <span class="mat-text-muted">London, UK</span>
+        </p>
+
+        <div fxLayout="row"  fxLayoutWrap="wrap" class="mt-1 text-uppercase">
+          <div fxFlex="33.33%">
+            <h5 class="mt-0 mb-0">89</h5>
+            <p class="mt-0 mb-0 text-md mat-text-muted">Photos</p>
+          </div>
+          <div fxFlex="33.33%">
+            <h5 class="mt-0 mb-0">354</h5>
+            <p class="mt-0 mb-0 text-md mat-text-muted">Followers</p>
+          </div>
+          <div fxFlex="33.33%">
+            <h5 class="mt-0 mb-0">945</h5>
+            <p class="mt-0 mb-0 text-md mat-text-muted">Following</p>
+          </div>
+        </div>
+      </md-card-content>
+    </md-card>
+  </div>
+</div>
+
+<div fxLayout="row"  fxLayoutWrap="wrap">
+  <div fxFlex.gt-sm="50" fxFlex.gt-xs="100" fxFlex="100">
+    <div  fxLayout="column"  fxLayoutWrap="wrap">
+      <div fxFlex>
+        <md-card>
+          <md-card-header>
+            <img md-card-avatar src="assets/images/avatar.jpg">
+            <md-card-subtitle>24 Mins ago</md-card-subtitle>
+            <md-card-title>Gerald Morris</md-card-title>
+          </md-card-header>
+          <sebm-google-map md-card-image [latitude]="lat" [longitude]="lng" [zoom]="zoom"></sebm-google-map>
+        </md-card>
+      </div>
+      <div fxFlex>
+        <md-card>
+          <md-card-content class="pb-0">
+            <div fxLayout="row"  fxLayoutAlign="start center" class="mb-2">
+              <div fxFlex>
+                <h3 class="mt-0 mb-0">London, UK</h3>
+                <h6 class="mt-0 mb-0">Saturday 2:00 AM</h6>
+                <p class="mat-text-muted mt-0 mb-0">Mostly Sunny</p>
+              </div>
+              <span fxFlex></span>
+              <div fxFlex class="text-xs-right">
+                <h1 class="text-xxl mt-0 mb-0">
+                  <span class="pe-is-w-moon-sea mat-text-accent"></span>
+                  <span>6<sup></sup></span>
+                </h1>
+              </div>
+            </div>
+            <div fxLayout="row" layout-align="center" class="mb-2 text-md">
+              <div class="pr-1" fxFlex>
+                <div fxLayout="row">          
+                  <span>Pressure</span>
+                  <span fxFlex></span>
+                  <span>30.09</span>
+                  <span>hPa</span>
+                </div>
+
+                <div fxLayout="row">          
+                  <span>Visibility</span>
+                  <span fxFlex></span>
+                  <span>11.27</span>
+                  <span>km</span>
+                </div>
+
+                <div fxLayout="row">          
+                  <span>Light</span>
+                  <span fxFlex></span>
+                  <span>0.00</span>
+                </div>
+
+                <div fxLayout="row">          
+                  <span>Light</span>
+                  <span fxFlex></span>
+                  <span>16</span>
+                  <span>C</span>
+                </div>
+              </div>
+              <div class="pl-1" fxFlex>
+                <div fxLayout="row">          
+                  <span>Humidity</span>
+                  <span fxFlex></span>
+                  <span>94</span>
+                  <span>%</span>
+                </div>
+
+                <div fxLayout="row">          
+                  <span>Precp.</span>
+                  <span fxFlex></span>
+                  <span></span>
+                  <span>mm</span>
+                </div>
+
+                <div fxLayout="row">          
+                  <span>Snow Depth</span>
+                  <span fxFlex></span>
+                  <span></span>
+                </div>
+
+                <div fxLayout="row">          
+                  <span>Wind Gust</span>
+                  <span fxFlex></span>
+                  <span></span>
+                </div>
+              </div>
+            </div>
+          </md-card-content>
+          <md-card-content class="mat-indigo">
+            <div fxLayout="row" class="text-xs-center">
+              <div fxFlex>
+                <div class="text-md">6 km/h</div>
+                <div class="text-md pb-xs"><md-icon>call_received</md-icon></div>
+                <div class="text-md">MON</div>
+                <h3 class="block pe-is-w-blizzard mt-0 mb-0 pb-xs"></h3>
+                <strong class="degree-value">10</strong>
+              </div>
+              <div fxFlex>
+                <div class="text-md">6 km/h</div>
+                <div class="text-md pb-xs"><md-icon>call_received</md-icon></div>
+                <div class="text-md">TUE</div>
+                <h2 class="block pe-is-w-eclipse-1 mt-0 mb-0 pb-xs"></h2>
+                <strong class="degree-value">8</strong>
+              </div>
+              <div fxFlex>
+                <div class="text-md">6 km/h</div>
+                <div class="text-md pb-xs"><md-icon>call_made</md-icon></div>
+                <div class="text-md">WED</div>
+                <h2 class="block pe-is-w-fog-3 mt-0 mb-0 pb-xs"></h2>
+                <strong class="degree-value">6</strong>
+              </div>
+              <div fxFlex>
+                <div class="text-md">6 km/h</div>
+                <div class="text-md pb-xs"><md-icon>arrow_upward</md-icon></div>
+                <div class="text-md">THU</div>
+                <h2 class="block pe-is-w-hail-day-2 mt-0 mb-0 pb-xs"></h2>
+                <strong class="degree-value">6</strong>
+              </div>
+              <div fxFlex>
+                <div class="text-md">6 km/h</div>
+                <div class="text-md pb-xs"><md-icon>call_received</md-icon></div>
+                <div class="text-md">FRI</div>
+                <h2 class="block pe-is-w-mix-rainfall-1 mt-0 mb-0 pb-xs"></h2>
+                <strong class="degree-value">9</strong>
+              </div>
+              <div fxFlex>
+                <div class="text-md">6 km/h</div>
+                <div class="text-md pb-xs"><md-icon>arrow_forward</md-icon></div>
+                <div class="text-md">SAT</div>
+                <h2 class="block pe-is-w-moon-sea mt-0 mb-0 pb-xs"></h2>
+                <strong class="degree-value">8</strong>
+              </div>
+            </div>
+          </md-card-content>
+        </md-card>
+      </div>
+    </div>
+  </div>
+  <div fxFlex.gt-sm="50" fxFlex.gt-xs="100" fxFlex="100">
+    <div fxLayout="column"  fxLayoutWrap="wrap">
+      <div>
+        <md-card>
+          <md-card-header>
+            <img md-card-avatar src="assets/images/avatar.jpg">
+            <md-card-subtitle>Yesterday</md-card-subtitle>
+            <md-card-title>Gerald Morris</md-card-title>
+          </md-card-header>
+          <img md-card-image src="assets/images/unsplash/22.jpg">
+          <md-card-content>
+            <button md-fab md-fab-card-float class="mr-1" color="warn"><md-icon>share</md-icon></button>
+            <p class="ma-0">Phileas Fogg and Aouda went on board, where they found Fix already installed. Below deck was a square cabin, of which the walls bulged out in the form of cots, above a circular divan; in the centre was a table provided with a swinging lamp.</p>
+          </md-card-content>
+          <hr>
+          <md-card-actions>
+            <div fxLayout="row">
+              <button md-icon-button>
+                <md-icon>share</md-icon>
+              </button>
+              <button md-icon-button>
+                <md-icon>favorite</md-icon>
+              </button>
+              <span fxFlex></span>
+              <button md-button>More info</button>
+              <button md-button>Download</button>
+            </div>
+          </md-card-actions>
+        </md-card>
+      </div>
+      <div>
+        <div fxLayout="row" fxLayoutWrap="wrap">
+          <div fxFlex.gt-sm="50" fxFlex="100">
+            <md-card>
+              <md-card-title fxLayout="row">
+                <span>Fashion</span>
+                <span fxFlex></span>
+                <span class="mat-text-primary">$83.00</span>
+              </md-card-title>
+              <div class="card-image-header" style="background-image: url(assets/images/unsplash/21.jpg); height: 265px;"></div>
+              <md-card-actions>
+                <div fxLayout="row">
+                  <button md-icon-button>
+                    <md-icon>share</md-icon>
+                  </button>
+                  <button md-icon-button>
+                    <md-icon>favorite</md-icon>
+                  </button>
+                  <span fxFlex></span>
+                  <button md-raised-button color="warn">Add to cart</button>
+                </div>
+              </md-card-actions>
+            </md-card>
+          </div>
+          <div fxFlex.gt-sm="50" fxFlex="100">
+            <md-card>
+              <md-card-title class="text-xs-center">4.30TB</md-card-title>
+              <md-card-subtitle class="text-xs-center">Storage Space</md-card-subtitle>
+              <md-card-content>
+                <canvas height="200" baseChart
+                    [data]="pieChartData"
+                    [options]="pieOptions"
+                    [colors]="pieChartColors"
+                   [labels]="pieChartLabels"
+                   [chartType]="pieChartType"></canvas>
+              </md-card-content>
+              <md-card-content>
+                <div fxLayout="row">
+                  <div fxFlex class="pr-xs pl-xs text-xs-right">
+                    <span class="text-sm block">Used Space</span>
+                    <h6 class="mt-xs mb-xs">1.92TB</h6>
+                    <span>30%</span>
+                  </div>
+                  <div fxFlex class="pl-xs pr-xs">
+                    <span class="text-sm block">Free Space</span>
+                    <h6 class="mt-xs mb-xs">3.23TB</h6>
+                    <span>30%</span>
+                  </div>
+                </div>
+              </md-card-content>
+            </md-card>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

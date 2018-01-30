@@ -1,0 +1,139 @@
+<md-card *ngIf="!edit && user.user.type == 3">
+  <md-card-title><b>Neuer Transport </b> </md-card-title>
+  <md-card-content>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <md-input-container dividerColor="primary" class="ml-xs mr-xs" style="width: 31%;" *ngFor="let shipment of shipments; let idx = index">
+          <input mdInput placeholder="Shipment ID {{idx+1}}" [(ngModel)]="shipment.value" [ngModelOptions]="{standalone: true}">
+        </md-input-container>
+
+      <div fxLayout="row" fxLayoutAlign="start center" class="mb-2">
+        <button md-raised-button color="secondary" (click)="addInput()">Add Shipment</button>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start center" class="mb-2">
+        <md-input-container class="ml-xs mr-xs" style="width: 100%;">
+        <input mdInput placeholder="Fahrzeughalter" type="text" [formControl]="form.controls['fahrzeughalter']" />
+        </md-input-container>
+        <md-input-container class="ml-xs mr-xs" style="width: 100%;">
+          <input mdInput placeholder="LKW Nr." type="text" [formControl]="form.controls['lkw_nr']">
+        </md-input-container>
+         <md-select placeholder="Destination" class="ml-xs mr-xs" style="width: 100%;" [formControl]="form.controls['destination']">
+           <md-option *ngFor="let item of countries" [value]="item.code" >{{item.name}}</md-option>
+          </md-select>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="start center" class="mb-2">
+        <md-input-container class="ml-xs mr-xs" style="width: 100%;">
+          <input mdInput placeholder="Fahrer" type="text" [formControl]="form.controls['fahrer']">
+        </md-input-container>
+        <md-input-container class="ml-xs mr-xs" style="width: 100%;">
+          <input mdInput placeholder="Container" type="text" [formControl]="form.controls['container']">
+        </md-input-container>
+
+        <md-input-container class="ml-xs mr-xs" style="width: 100%;">
+          <input mdInput placeholder="Plombennummer" type="text" [formControl]="form.controls['plomben_nr']">
+        </md-input-container>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="start center" class="mb-2">
+        <md-input-container dividerColor="primary" class="ml-xs mr-xs" style="width: 100%;">
+          <input mdInput placeholder="Ankunft" type="date" [formControl]="form.controls['ankunft']">
+        </md-input-container>
+        <md-input-container dividerColor="accent" class="ml-xs mr-xs" style="width: 100%;">
+          <input mdInput placeholder="Abfahrt" type="text"  disabled [formControl]="form.controls['abfahrt']">
+           <!--<datetime [formControl]="form.controls['abfahrt']" [(ngModel)]="date"></datetime>-->
+        </md-input-container>
+        <md-select placeholder="Zuweisung" class="ml-xs mr-xs" style="width: 100%;" [formControl]="form.controls['rampe']">
+           <md-option *ngFor="let i of list" [value]="i.id" >{{i.name}}</md-option>
+        </md-select>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="start center" class="mb-2">
+        <md-select placeholder="ADR" class="ml-xs mr-xs" style="width: 100%;" [formControl]="form.controls['adr']">
+          <md-option value="Nein">Nein</md-option>
+          <md-option value="Ja">Ja</md-option>
+        </md-select>
+
+        <md-select placeholder="Luftfracht" class="ml-xs mr-xs" style="width: 100%;" [formControl]="form.controls['luftfracht']">
+          <md-option value="Nein">Nein</md-option>
+          <md-option value="Ja">Ja</md-option>
+        </md-select>
+      </div>
+      <hr>
+      <md-card-actions style="margin-top:2%">
+        <button md-raised-button color="primary" class="primary" type="submit" >Speichern</button>
+        <button md-raised-button color="accent" (click)="resetForm()">Zurücksetzen</button>
+      </md-card-actions>
+    </form>
+  </md-card-content>
+</md-card>
+
+
+<md-card *ngIf="edit && user.user.type == 3">
+  <md-card-title><b>Transport bearbeiten </b> </md-card-title>
+  <md-card-content>
+    <form [formGroup]="form" (ngSubmit)="onEditSubmit()">
+        <md-input-container dividerColor="primary" class="ml-xs mr-xs" style="width: 31%;" *ngFor="let shipment of shipments; let idx = index">
+          <input mdInput placeholder="Shipment ID {{idx+1}}" [(ngModel)]="shipment.value" [ngModelOptions]="{standalone: true}">
+        </md-input-container>
+
+      <div fxLayout="row" fxLayoutAlign="start center" class="mb-2">
+        <button md-raised-button color="secondary" (click)="addInput()">Add Shipment</button>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start center" class="mb-2">
+        <md-input-container class="ml-xs mr-xs" style="width: 100%;">
+        <input mdInput placeholder="Fahrzeughalter" type="text" [formControl]="form.controls['fahrzeughalter']" [(ngModel)]="editTransportObj.fahrzeughalter" />
+        </md-input-container>
+        <md-input-container class="ml-xs mr-xs" style="width: 100%;">
+          <input mdInput placeholder="LKW Nr." type="text" [formControl]="form.controls['lkw_nr']" [(ngModel)]="editTransportObj.lkw_nr">
+        </md-input-container>
+         <md-select placeholder="Destination" class="ml-xs mr-xs" style="width: 100%;" [formControl]="form.controls['destination']" [(ngModel)]="editTransportObj.destination">
+           <md-option *ngFor="let item of countries" [value]="item.code" >{{item.name}}</md-option>
+          </md-select>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="start center" class="mb-2">
+        <md-input-container class="ml-xs mr-xs" style="width: 100%;">
+          <input mdInput placeholder="Fahrer" type="text" [formControl]="form.controls['fahrer']" [(ngModel)]="editTransportObj.fahrer">
+        </md-input-container>
+        <md-input-container class="ml-xs mr-xs" style="width: 100%;"> 
+          <input mdInput placeholder="Container" type="text" [formControl]="form.controls['container']" [(ngModel)]="editTransportObj.container">
+        </md-input-container>
+
+        <md-input-container class="ml-xs mr-xs" style="width: 100%;">
+          <input mdInput placeholder="Plombennummer" type="text" [formControl]="form.controls['plomben_nr']" [(ngModel)]="editTransportObj.plomben_nr">
+        </md-input-container>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="start center" class="mb-2">
+        <md-input-container dividerColor="primary" class="ml-xs mr-xs" style="width: 100%;">
+          <input mdInput placeholder="Ankunft" type="date" [formControl]="form.controls['ankunft']" [(ngModel)]="editTransportObj.ankunft">
+        </md-input-container>
+        <md-input-container dividerColor="accent" class="ml-xs mr-xs" style="width: 100%;">
+          <input mdInput placeholder="Abfahrt" type="text"  disabled [formControl]="form.controls['abfahrt']" [(ngModel)]="editTransportObj.abfahrt">
+        </md-input-container>
+        <md-select placeholder="Zuweisung" class="ml-xs mr-xs" style="width: 100%;" [formControl]="form.controls['rampe']" [(ngModel)]="editTransportObj.rampe">
+           <md-option *ngFor="let i of list" [value]="i.id" >{{i.name}}</md-option>
+        </md-select>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="start center" class="mb-2">
+        <md-select placeholder="ADR" class="ml-xs mr-xs" style="width: 100%;" [formControl]="form.controls['adr']" [(ngModel)]="editTransportObj.adr">
+          <md-option value="Nein">Nein</md-option>
+          <md-option value="Ja">Ja</md-option>
+        </md-select>
+
+        <md-select placeholder="Luftfracht" class="ml-xs mr-xs" style="width: 100%;" [formControl]="form.controls['luftfracht']" [(ngModel)]="editTransportObj.luftfracht">
+          <md-option value="Nein">Nein</md-option>
+          <md-option value="Ja">Ja</md-option>
+        </md-select>
+      </div>
+      <hr>
+      <md-card-actions style="margin-top:2%">
+        <button md-raised-button color="primary" class="primary" type="submit" >Speichern</button>
+        <!--<button md-raised-button color="accent" (click)="resetForm()">Zurücksetzen</button>-->
+      </md-card-actions>
+    </form>
+  </md-card-content>
+</md-card>
+
+<app-links></app-links>

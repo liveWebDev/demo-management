@@ -1,0 +1,50 @@
+<md-card>
+  <md-card-title>Slider</md-card-title>
+  <md-card-subtitle>md-slider is a component that allows users to select from a range of values by moving the slider thumb</md-card-subtitle>
+  <md-card-content>
+    <p>Default Slider</p>
+    Label <md-slider #slidey></md-slider>
+    {{slidey.value}}
+
+    <p>Slider with Min and Max</p>
+    <input [(ngModel)]="min">
+    <md-slider [min]="min" [max]="max" tick-interval="5" #slider2></md-slider>
+    {{slider2.value}}
+    <input [(ngModel)]="max">
+
+    <p>Disabled Slider</p>
+    <md-slider disabled #slider3></md-slider>
+    {{slider3.value}}
+
+    <p>Slider with set value</p>
+    <md-slider value="43"></md-slider>
+
+    <p>Slider with step defined</p>
+    <md-slider min="1" max="100" step="20" #slider5></md-slider>
+    {{slider5.value}}
+
+    <p>Slider with set tick interval</p>
+    <md-slider tick-interval="auto"></md-slider>
+    <md-slider tick-interval="9"></md-slider>
+
+    <p>Slider with Thumb Label</p>
+    <md-slider thumb-label></md-slider>
+
+    <p>Slider with one-way binding</p>
+    <md-slider [value]="val" step="40"></md-slider>
+    <input [(ngModel)]="val">
+
+    <p>Slider with two-way binding</p>
+    <md-slider [(ngModel)]="demo" step="40"></md-slider>
+    <input [(ngModel)]="demo">
+
+    <p>Inverted slider</p>
+    <md-slider invert value="50" tick-interval="5"></md-slider>
+
+    <p>Vertical slider</p>
+    <md-slider vertical thumb-label tick-interval="auto" value="50"></md-slider>
+
+    <p>Inverted vertical slider</p>
+    <md-slider vertical invert thumb-label tick-interval="auto" value="50"></md-slider>
+  </md-card-content>
+</md-card>

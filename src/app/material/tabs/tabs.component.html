@@ -1,0 +1,144 @@
+<md-card>
+  <md-card-title>Tab Group Demo - Dynamic Tabs</md-card-title>
+  <div class="mat-blue-grey">
+    <md-card-title>Add New Tab</md-card-title>
+    <md-card-content>
+      <md-checkbox [(ngModel)]="createWithLongContent">
+        Include extra content
+      </md-checkbox>
+      <md-checkbox [(ngModel)]="gotoNewTabAfterAdding">
+        Select after adding
+      </md-checkbox>
+      <div>
+        Position:
+        <md-input-container>
+          <input mdInput type="number" [(ngModel)]="addTabPosition">
+        </md-input-container>
+      </div>
+      <button md-raised-button color="primary"
+              (click)="addTab(createWithLongContent)">
+        Add Tab
+      </button>
+    </md-card-content>
+  </div>
+  <md-card-content>
+    <md-input-container>
+      <input mdInput type="number" placeholder="Selected tab index" [(ngModel)]="activeTabIndex">
+    </md-input-container>
+  
+    <md-card>
+      <md-tab-group md-dynamic-height [(selectedIndex)]="activeTabIndex">
+        <md-tab *ngFor="let tab of dynamicTabs" [disabled]="tab.disabled">
+          <ng-template md-tab-label>{{tab.label}}</ng-template>
+          <md-card-content>
+            <p class="mb-1">{{tab.content}}</p>
+            <div *ngIf="tab.extraContent" class="mb-1">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis risus eget urna mollis ornare vel eu leo. Maecenas faucibus mollis interdum. Sed posuere consectetur est at lobortis. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+            </div>
+            <p>
+              <md-input-container>
+                <input mdInput placeholder="Tab Label" [(ngModel)]="tab.label">
+              </md-input-container>
+            </p>
+            <button md-raised-button color="primary" [disabled]="dynamicTabs.length == 1" (click)="deleteTab(tab)">Delete Tab</button>
+          </md-card-content>
+        </md-tab>
+      </md-tab-group>
+    </md-card>
+  </md-card-content>
+</md-card>
+
+<md-card>
+  <md-card-title>Tab Group Demo - Dynamic Tabs</md-card-title>
+  <md-card-content>
+    <md-card>
+      <md-tab-group md-dynamic-height>
+        <md-tab *ngFor="let tab of tabs" [disabled]="tab.disabled">
+          <ng-template md-tab-label>{{tab.label}}</ng-template>
+          <md-card-content>
+            <p class="mb-1">{{tab.content}}</p>
+            <div *ngIf="tab.extraContent" class="mb-1">
+              Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Etiam porta sem malesuada magna mollis euismod. Vestibulum id ligula porta felis euismod semper. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
+            </div>
+            <md-input-container>
+              <input mdInput placeholder="Tab Label" [(ngModel)]="tab.label">
+            </md-input-container>
+          </md-card-content>
+        </md-tab>
+      </md-tab-group>
+    </md-card>
+  </md-card-content>
+</md-card>
+
+<md-card>
+  <md-card-title>Tab Group Demo - Dynamic Tabs</md-card-title>
+  <md-card-content>
+    <md-card>
+      <md-tab-group style="height: 200px">
+        <md-tab *ngFor="let tab of tabs" [disabled]="tab.disabled">
+          <ng-template md-tab-label>{{tab.label}}</ng-template>
+          <md-card-content>
+            <p class="mb-1">{{tab.content}}</p>
+            <div *ngIf="tab.extraContent" class="mb-1">
+              Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Etiam porta sem malesuada magna mollis euismod. Vestibulum id ligula porta felis euismod semper. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
+            </div>
+            <md-input-container>
+              <input mdInput placeholder="Tab Label" [(ngModel)]="tab.label">
+            </md-input-container>
+          </md-card-content>
+        </md-tab>
+      </md-tab-group>
+    </md-card>
+  </md-card-content>
+</md-card>
+
+<md-card>
+  <md-card-title>Stretched Tabs</md-card-title>
+  <md-card-content>
+    <md-card>
+      <md-tab-group style="height: 200px" md-stretch-tabs>
+        <md-tab *ngFor="let tab of tabs" [disabled]="tab.disabled">
+          <ng-template md-tab-label>{{tab.label}}</ng-template>
+          <md-card-content>{{tab.content}}</md-card-content>
+        </md-tab>
+      </md-tab-group>
+    </md-card>
+  </md-card-content>
+</md-card>
+
+<md-card>
+  <md-card-title>Async Tabs</md-card-title>
+  <md-card-content>
+    <md-card>
+      <md-tab-group>
+        <md-tab *ngFor="let tab of asyncTabs | async; let i = index" [disabled]="i == 1">
+          <ng-template md-tab-label>{{tab.label}}</ng-template>
+          <md-card-content>
+            <p class="mb-2">{{tab.content}}</p>
+            <md-input-container>
+              <input mdInput placeholder="Tab Label" [(ngModel)]="tab.label">
+            </md-input-container>
+          </md-card-content>
+        </md-tab>
+      </md-tab-group>
+    </md-card>
+  </md-card-content>
+</md-card>
+
+<md-card>
+  <md-card-title>Tabs with simplified api</md-card-title>
+  <md-card-content>
+    <md-card>
+      <md-tab-group>
+        <md-tab>
+          <ng-template md-tab-label>Earth</ng-template>
+          <md-card-content>This tab is about the Earth!</md-card-content>
+        </md-tab>
+        <md-tab>
+          <ng-template md-tab-label>Fire</ng-template>
+          <md-card-content>This tab is about combustion!</md-card-content>
+        </md-tab>
+      </md-tab-group>
+    </md-card>
+  </md-card-content>
+</md-card>

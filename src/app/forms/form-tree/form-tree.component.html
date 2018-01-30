@@ -1,0 +1,90 @@
+<md-toolbar color="primary">
+  <md-toolbar-row>   
+  </md-toolbar-row>
+</md-toolbar>
+
+<div  fxLayout="row"  fxLayoutWrap="wrap"  fxLayoutAlign="center start">
+  <div fxFlex.gt-md="30" fxFlex.gt-sm="100" fxFlex="100">
+    <md-card class="mat-card-top">
+      <md-card-content>
+        <form class="mb-1">
+          <md-input-container style="width: 100%">
+            <input mdInput placeholder="Filter nodes" #filter (keyup)="filterNodes(filter.value, tree)" placeholder="filter nodes">
+          </md-input-container>
+        </form>
+
+        <tree-root
+          #tree
+          [nodes]="nodes"
+          [options]="customTemplateStringOptions"
+          [focused]="true"
+          (onEvent)="onEvent($event)">
+          <ng-template #treeNodeTemplate let-node>
+            <span title="{{node.data.subTitle}}">{{ node.data.name }}</span>
+            <span class="pull-right">{{ childrenCount(node) }}</span>
+            <button (click)="go($event)">Custom Action</button>
+          </ng-template>
+          <ng-template #loadingTemplate>Loading, please hold....</ng-template>
+        </tree-root>
+      </md-card-content>
+    </md-card>
+  </div>
+
+  <div fxFlex.gt-md="50" fxFlex.gt-sm="100" fxFlex="100" class="pl-1 pr-1">
+    <h6>Keys:</h6>
+    <p>down | up | left | right | space | enter</p>
+    
+    <h6>Mouse:</h6>
+    <p>click to select | shift+click to select multi</p>
+    
+    <h6>API:</h6>
+    <button md-raised-button md-button-sm (click)="tree.treeModel.focusNextNode()">next node</button>
+    <button md-raised-button md-button-sm (click)="tree.treeModel.focusPreviousNode()">previous node</button>
+    <button md-raised-button md-button-sm (click)="tree.treeModel.focusDrillDown()">drill down</button>
+    <button md-raised-button md-button-sm (click)="tree.treeModel.focusDrillUp()">drill up</button>
+    <button md-raised-button md-button-sm (click)="customTemplateStringOptions.allowDrag = true">allowDrag</button>
+    <p></p>
+    <button md-raised-button md-button-sm (click)="tree.treeModel.focusNextNode()">next node</button>
+    <button md-raised-button md-button-sm (click)="tree.treeModel.focusPreviousNode()">previous node</button>
+    <button md-raised-button md-button-sm (click)="tree.treeModel.focusDrillDown()">drill down</button>
+    <button md-raised-button md-button-sm (click)="tree.treeModel.focusDrillUp()">drill up</button>
+    <button md-raised-button md-button-sm (click)="customTemplateStringOptions.allowDrag = true">allowDrag</button>
+    <p></p>
+    <button md-raised-button md-button-sm
+      [disabled]="!tree.treeModel.getFocusedNode()"
+      (click)="tree.treeModel.getFocusedNode().toggleActivated()">
+      {{ tree.treeModel.getFocusedNode()?.isActive ? 'deactivate' : 'activate' }}
+    </button>
+    <button md-raised-button md-button-sm
+      [disabled]="!tree.treeModel.getFocusedNode()"
+      (click)="tree.treeModel.getFocusedNode().toggleExpanded()">
+      {{ tree.treeModel.getFocusedNode()?.isExpanded ? 'collapse' : 'expand' }}
+    </button>
+    <button md-raised-button md-button-sm
+      [disabled]="!tree.treeModel.getFocusedNode()"
+      (click)="tree.treeModel.getFocusedNode().blur()">
+      blur
+    </button>
+    <button md-raised-button md-button-sm
+      (click)="addNode(tree)">
+      Add Node
+    </button>
+    <button md-raised-button md-button-sm
+      (click)="activateSubSub(tree)">
+      Activate inner node
+    </button>
+    <p></p>
+    <button md-raised-button md-button-sm
+      (click)="tree.treeModel.expandAll()">
+      Expand All
+    </button>
+    <button md-raised-button md-button-sm
+      (click)="tree.treeModel.collapseAll()">
+      Collapse All
+    </button>
+    <button md-raised-button md-button-sm
+      (click)="activeNodes(tree.treeModel)">
+      getActiveNodes()
+    </button>
+  </div>
+</div>

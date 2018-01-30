@@ -1,0 +1,224 @@
+<md-toolbar color="primary">
+  <md-toolbar-row>
+    <span fxFlex></span>
+    <button md-raised-button color="accent" class="ml-xs mr-xs">Send Message</button>
+    <button md-raised-button color="warn" class="ml-xs mr-xs">Follow</button>
+  </md-toolbar-row>
+</md-toolbar>
+
+<div class="wrapper">
+  <div  fxLayout="row" fxLayoutWrap="wrap">
+    <div fxFlex.gt-sm="40" fxFlex="100">
+      <md-card>
+        <md-card-content>
+          <div fxLayout="row">
+            <div fxFlex="55">
+              <h4 class="ma-0">Gerald <b>Morris</b></h4>
+              <small>gerald@morris.com</small>
+              <p class="mt-xs mb-xs">Human Resources Manager</p>
+              <a href="javascript:;" class="block mt-xs mb-xs">email@contact.com</a>
+              <a href="javascript:;" class="block mt-xs mb-xs">www.example.com</a>
+              <button md-raised-button color="primary">Edit Profile</button>
+            </div>
+            <div fxFlex="45">
+              <figure>
+                <div class="text-xs-center">
+                  <img src="assets/images/avatar.jpg" alt="" class="radius-circle">
+                  <div class="text-md mt10">Account Usage</div>
+                </div>
+                <div class="ma-xs">
+                  <md-progress-bar mode="determinate" value="40"></md-progress-bar>
+                </div>
+                <div  class="text-xs-center"><small>234Gb of 879Gb</small></div>
+              </figure>
+            </div>
+          </div>
+        </md-card-content>
+        <hr>
+        <md-card-content>
+          <div fxLayout="row" class="text-xs-center">
+            <div fxFlex="33">
+              <h2 class="mt-0"><b>23,8K</b></h2>
+              <small>Followers</small>
+            </div>
+            <div fxFlex="33">
+              <h2 class="mt-0"><b>569</b></h2>
+              <small>Following</small>
+            </div>
+            <div fxFlex="33">
+              <h2 class="mt-0"><b>67</b></h2>
+              <small>Posts</small>
+            </div>
+          </div>
+        </md-card-content>
+        <hr>
+        <md-card-content>
+          <h6 class="mt-0">About</h6>
+          <p>Maecenas sed diam eget risus varius blandit sit amet non magna. Curabitur blandit tempus porttitor. Vestibulum id ligula porta felis euismod semper.</p>
+        </md-card-content>
+      </md-card>
+    </div>
+    <div fxFlex.gt-sm="60" fxFlex="100">
+      <div fxLayout="column">
+        <md-card class="profile-post">
+          <form  fxLayout="row">
+            <textarea placeholder="What's on your mind" rows="6"></textarea>
+          </form>
+          <hr>
+          <md-card-actions>
+            <div fxLayout="row">
+              <button md-icon-button>
+                <md-icon>insert_photo</md-icon>
+              </button>
+              <button md-icon-button>
+                <md-icon>insert_link</md-icon>
+              </button>
+              <button md-icon-button>
+                <md-icon>location_on</md-icon>
+              </button>
+              <span fxFlex></span>
+              <button md-raised-button color="primary">Post</button>
+            </div>
+          </md-card-actions>
+        </md-card>
+        <md-card>
+          <md-tab-group>
+            <md-tab>
+              <ng-template md-tab-label>Activity</ng-template>
+              <div class="activity-stream">
+                <md-card class="shadow-none">
+                  <md-card-header>
+                    <img md-card-avatar src="assets/images/face1.jpg">
+                    <md-card-title>Received a call from Joel</md-card-title>
+                    <md-card-subtitle>Header subtitle</md-card-subtitle>
+                  </md-card-header>
+                </md-card>
+                <md-card class="shadow-none">
+                  <md-card-header>
+                    <img md-card-avatar src="assets/images/avatar.jpg">
+                    <md-card-title>Header title</md-card-title>
+                    <md-card-subtitle>Header subtitle</md-card-subtitle>
+                  </md-card-header>
+                  <md-card-content>
+                    <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+                    <a href="javascript:;" class="mr-1">Like</a>
+                    <a href="javascript:;">Comment</a>
+                  </md-card-content>
+                </md-card>
+                <md-card class="shadow-none">
+                  <md-card-header>
+                    <img md-card-avatar src="assets/images/face2.jpg">
+                    <md-card-title>Header title</md-card-title>
+                    <md-card-subtitle>Added a photo</md-card-subtitle>
+                  </md-card-header>
+                  <md-card-content>
+                    <img src="https://source.unsplash.com/300x150">
+                  </md-card-content>
+                </md-card>
+                <md-card class="shadow-none">
+                  <md-card-header>
+                    <img md-card-avatar src="assets/images/face3.jpg">
+                    <md-card-title>Header title</md-card-title>
+                    <md-card-subtitle>Header subtitle</md-card-subtitle>
+                  </md-card-header>
+                  <md-card-content>
+                    <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+                  </md-card-content>
+                </md-card>
+                <md-card class="shadow-none">
+                  <md-card-header>
+                    <img md-card-avatar src="assets/images/face4.jpg">
+                    <md-card-title>Uploaded new file</md-card-title>
+                    <md-card-subtitle>Header subtitle</md-card-subtitle>
+                  </md-card-header>
+                </md-card>
+              </div>
+            </md-tab>
+            <md-tab>
+              <ng-template md-tab-label>Bio</ng-template>
+              <md-card-content>
+                <h6 class="mt-0 mb-1">Basic Information</h6>
+                <div fxLayout="row" layout-align="center">
+                  <div class="pr-1" fxFlex>
+                    <div fxLayout="column" class="mb-1">          
+                      <span class="text-md">Mobile</span>
+                      <strong>+20 0593 4095 03</strong>
+                    </div>
+
+                    <div fxLayout="column" class="mb-1">          
+                      <span class="text-md">Birthday</span>
+                      <strong>30.09</strong>
+                    </div>
+
+                    <div fxLayout="column" class="mb-1">          
+                      <span class="text-md">Country</span>
+                      <strong>30.09</strong>
+                    </div>
+
+                    <div fxLayout="column">          
+                      <span class="text-md">Occupation</span>
+                      <strong>30.09</strong>
+                    </div>
+
+                  </div>
+                  <div class="pl-1" fxFlex>
+                    <div fxLayout="column" class="mb-1">          
+                      <span class="text-md">Extension</span>
+                      <strong>94</strong>
+                    </div>
+
+                    <div fxLayout="column" class="mb-1">          
+                      <span class="text-md">Mobile</span>
+                      <strong>30.09</strong>
+                    </div>
+
+                    <div fxLayout="column" class="mb-1">          
+                      <span class="text-md">Phone</span>
+                      <strong>30.09</strong>
+                    </div>
+
+                    <div fxLayout="column">          
+                      <span class="text-md">Facebook</span>
+                      <strong>30.09</strong>
+                    </div>
+
+                  </div>
+                </div> 
+              </md-card-content>
+              <hr>
+              <md-card-content>
+                <h6 class="mt-0 mb-1">Bio</h6>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis euismod semper. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+              </md-card-content>
+              <hr>
+              <md-card-content>
+                <h6 class="mt-0 mb-1">Skills</h6>
+                <canvas height="100" baseChart class="chart"
+                  [data]="pieChartData"
+                  [options]="pieOptions"
+                  [colors]="pieChartColors"
+                  [labels]="pieChartLabels"
+                  [chartType]="pieChartType"></canvas>
+              </md-card-content>
+            </md-tab>
+            <md-tab>
+              <md-card-content>
+                <ng-template md-tab-label>Photos</ng-template>
+                <md-grid-list cols="3">
+                  <md-grid-tile *ngFor="let id of images" rowHeight="4:3">
+                    <img src="https://source.unsplash.com/600x600?{{ id }}" alt="Card image cap"/>
+                    <md-grid-tile-footer>
+                      <h3 md-line>{{ id }}</h3>
+                      <span md-line>Gallery image: {{ id }}</span>
+                      <md-icon>favorite</md-icon>
+                    </md-grid-tile-footer>
+                  </md-grid-tile>
+                </md-grid-list>
+              </md-card-content>
+            </md-tab>
+          </md-tab-group>
+        </md-card>
+      </div>
+    </div>
+  </div>
+</div>

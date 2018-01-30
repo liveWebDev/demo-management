@@ -1,0 +1,144 @@
+<md-card>
+  <md-card-title>Lists</md-card-title>
+  <md-card-subtitle>md-list is a container component that wraps and formats a series of line items</md-card-subtitle>
+  <md-card-content>
+    <p>Normal lists</p>
+    <md-card>
+      <md-list>
+        <h3 md-subheader>Items</h3>
+        <md-list-item *ngFor="let item of items">
+          {{item}}
+        </md-list-item>
+      </md-list>
+    </md-card>
+
+    <p>Multiline lists <button (click)="thirdLine=!thirdLine">Show third line</button></p>
+    <md-card>
+      <md-list>
+        <md-list-item *ngFor="let contact of contacts">
+          <h3 md-line>{{contact.name}}</h3>
+          <p md-line *ngIf="thirdLine">extra line</p>
+          <p md-line>{{contact.headline}}</p>
+        </md-list-item>
+      </md-list>
+    </md-card>
+
+    <p>3 Line List Item with Avatars and Icons</p>
+    <md-card>
+      <md-list>
+        <h3 md-subheader>Today</h3>
+        <md-list-item *ngFor="let message of messages">
+          <img md-list-avatar [src]="message.image" alt="Image of {{message.from}}">
+          <h4 md-line>{{message.from}}</h4>
+          <p md-line>
+            <span>{{message.subject}} -- </span>
+            <span class="text-md mat-text-muted">{{message.message}}</span>
+          </p>
+        </md-list-item>
+        <md-divider></md-divider>
+        <md-list-item *ngFor="let message of messages">
+          <h4 md-line>{{message.from}}</h4>
+          <p md-line> {{message.subject}} </p>
+          <p md-line class="text-md mat-text-muted">{{message.message}} </p>
+        </md-list-item>
+        <md-divider></md-divider>
+        <md-list-item *ngFor="let message of messages">
+          <md-icon md-list-avatar>person</md-icon>
+          <h4 md-line>{{message.from}}</h4>
+          <p md-line>
+            <span>{{message.subject}} -- </span>
+            <span class="text-md mat-text-muted">{{message.message}}</span>
+          </p>
+        </md-list-item>
+      </md-list>
+    </md-card>
+
+    <p>Dense lists</p>
+    <md-card>
+      <md-list dense>
+        <h3 md-subheader>Items</h3>
+        <md-list-item *ngFor="let item of items">
+          {{item}}
+        </md-list-item>
+      </md-list>
+    </md-card>
+
+    <p>Multiline dense list</p>
+    <md-card>
+      <md-list dense>
+        <md-list-item *ngFor="let contact of contacts">
+          <h3 md-line>{{contact.name}}</h3>
+          <p md-line>{{contact.headline}}</p>
+        </md-list-item>
+      </md-list>
+    </md-card>
+
+    <p>3 Line List Item with Avatars and Icons</p>
+    <md-card>
+      <md-list dense>
+        <h3 md-subheader>Today</h3>
+        <md-list-item *ngFor="let message of messages">
+          <img md-list-avatar [src]="message.image" alt="Image of {{message.from}}">
+          <h4 md-line>{{message.from}}</h4>
+          <p md-line> {{message.subject}} </p>
+          <p md-line>{{message.message}} </p>
+        </md-list-item>
+      </md-list>
+    </md-card>
+
+    <p>Checkbox list</p>
+    <md-card>  
+      <md-list>
+        <ng-template ngFor let-todo [ngForOf]="todos">
+          <md-list-item>
+            <div fxLayout="row" fxLayoutAlign="start center" style="width: 100%;">
+              <div fxFlex>
+                <md-checkbox [checked]="todo.finished">
+                  {{todo.name}}
+                </md-checkbox>
+              </div>
+              <div><md-icon>more_horiz</md-icon></div>
+            </div>
+          </md-list-item>
+        </ng-template>
+      </md-list>
+    </md-card>
+
+    <p>Nav lists</p>
+    <md-card>
+      <md-nav-list>
+        <a md-list-item *ngFor="let link of links" href="http://www.google.com">
+          {{ link.name }}
+        </a>
+      </md-nav-list>
+      <hr>
+      <md-nav-list>
+        <h3 md-subheader *ngIf="infoClicked">More info!</h3>
+        <md-list-item *ngFor="let link of links">
+          <a md-line href="http://www.google.com">{{ link.name }}</a>
+          <button md-icon-button (click)="infoClicked=!infoClicked">
+            <md-icon>info</md-icon>
+          </button>
+        </md-list-item>
+      </md-nav-list>
+      <hr>
+      <md-nav-list>
+        <a md-list-item *ngFor="let link of links" href="http://www.google.com">
+          <md-icon md-list-icon>folder</md-icon>
+          <span md-line>{{ link.name }}</span>
+          <span md-line> Description </span>
+        </a>
+      </md-nav-list>
+      <hr>
+      <md-nav-list dense>
+        <md-list-item *ngFor="let link of links">
+          <a md-line href="http://www.google.com">{{ link.name }}</a>
+          <button md-icon-button (click)="infoClicked=!infoClicked">
+            <md-icon class="material-icons">info</md-icon>
+          </button>
+        </md-list-item>
+      </md-nav-list>
+    </md-card>
+  </md-card-content>
+</md-card>
+

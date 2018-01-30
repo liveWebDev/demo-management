@@ -1,0 +1,101 @@
+<md-toolbar color="primary">
+  <md-toolbar-row>   
+  </md-toolbar-row>
+</md-toolbar>
+
+<div fxLayout="row" fxLayoutAlign="center start">
+  <div fxFlex.gt-md="75" fxFlex.gt-sm="90" fxFlex="100">
+    <md-card class="mat-card-top">
+      <md-sidenav-container>
+        <md-sidenav #chatnav [mode]="isOver() ? 'over' : 'side'" [opened]="!isOver()">
+          <md-toolbar>
+            <a class="toolbar-avatar">
+              <img src="assets/images/avatar.jpg">
+            </a>
+            <span fxFlex></span>
+            <button [md-menu-trigger-for]="user" md-icon-button>
+              <md-icon>more_vert</md-icon>
+            </button>
+            <md-menu #user="mdMenu" x-position="before">
+              <button md-menu-item>Profile</button>
+              <button md-menu-item>Settings</button>
+              <button md-menu-item>Log out</button>
+            </md-menu>
+          </md-toolbar>
+          <hr>
+          <md-nav-list>
+            <md-list-item (click)="onSelect(message)" *ngFor="let message of messages">
+              <img md-list-avatar src="{{message.photo}}" alt="">
+              <h3 md-line> {{message.from}} </h3>
+              <p md-line> {{message.subject}} </p>
+            </md-list-item>
+          </md-nav-list>
+        </md-sidenav>
+        <md-toolbar class="chat-toolbar">
+          <button (click)="chatnav.toggle()" class="mr-1" md-icon-button>
+            <md-icon>short_text</md-icon>
+          </button>
+          <a class="toolbar-avatar mr-1">
+            <img src="{{selectedMessage.photo}}">
+          </a>
+          <div fxFlex>
+            <h5 class="ma-0">{{selectedMessage.from}}</h5>
+            <h6 class="ma-0 mat-text-muted">Online</h6>
+          </div>
+          <button [md-menu-trigger-for]="them" md-icon-button class="ml-1">
+            <md-icon>more_vert</md-icon>
+          </button>
+          <md-menu #them="mdMenu" x-position="before">
+            <button md-menu-item>Contact info</button>
+            <button md-menu-item>Mute</button>
+            <button md-menu-item>Delete chat</button>
+          </md-menu>
+        </md-toolbar>
+        <hr>
+        <md-card-content>
+          <div class="chat-conversation-user them">
+            <div class="chat-conversation-message">
+              <p>Hey.<span class="chat-date">{{ 1427207139000 | date: 'fullDate' }}</span></p>
+            </div>
+          </div>
+          <div class="chat-conversation-user them">
+            <div class="chat-conversation-message">
+              <p>How are the wife and kids, Taylor?<span class="chat-date">{{ 1427412725000 | date: 'fullDate' }}</span></p>
+            </div>
+          </div>
+          <div class="chat-conversation-user me">
+            <div class="chat-conversation-message">
+              <p>Pretty good, Samuel.<span class="chat-date">{{ 1427546580000 | date: 'fullDate' }}</span></p>
+            </div>
+          </div>
+          <div class="chat-conversation-user them">
+            <div class="chat-conversation-message">
+              <p>Curabitur blandit tempus porttitor.<span class="chat-date">{{ 1428275520000 | date: 'fullDate' }}</span></p>
+            </div>
+          </div>
+          <div class="chat-conversation-user me">
+            <div class="chat-conversation-message">
+              <p>Goodnight!<span class="chat-date">{{ 1428830580000 | date: 'fullDate' }}</span></p>
+            </div>
+          </div>
+          <div class="chat-conversation-user them">
+            <div class="chat-conversation-message">
+              <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.<span class="chat-date">{{ 1429363920000 | date: 'fullDate' }}</span></p>
+            </div>
+          </div>
+        </md-card-content>
+        <hr>
+        <md-card-actions>
+          <div fxLayout="row" layout-align="start center">
+            <md-input-container class="mr-1 ml-1" fxFlex>
+              <input mdInput placeholder="Send message">
+            </md-input-container>
+            <button md-fab>
+              <md-icon>send</md-icon>
+            </button>
+          </div>
+        </md-card-actions>
+      </md-sidenav-container>
+    </md-card>
+  </div>
+</div>

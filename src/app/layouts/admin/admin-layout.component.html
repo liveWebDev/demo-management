@@ -1,0 +1,258 @@
+<div class="app" #root="$implicit" dir="ltr" [ngClass]="{'app-dark': dark, 'boxed': boxed, 'collapsed-sidebar': collapseSidebar, 'compact-sidebar': compactSidebar}">
+  <md-toolbar class="main-header" color="primary">
+    <button (click)="sidemenu.toggle()" md-icon-button>
+      <md-icon>menu</md-icon>
+    </button>
+    <div class="branding">
+      <div class="logo"></div>
+    </div>
+    <div class="search-bar" fxFlex>
+      <form class="search-form" fxShow="false" fxShow.gt-xs>
+        <md-icon>search</md-icon>
+        <input type="text" placeholder="Search" autofocus="true" />
+      </form>
+    </div>
+    <button appToggleFullscreen md-icon-button>
+      <md-icon>fullscreen</md-icon>
+    </button>
+    <button (click)="end.toggle()" md-icon-button class="ml-xs overflow-visible">
+      <md-icon>notifications</md-icon>
+      <span class="notification-label">5</span>
+    </button>
+    <button [md-menu-trigger-for]="user" md-icon-button class="ml-xs">
+      <md-icon>person</md-icon>
+    </button>
+    <md-menu #user="mdMenu" x-position="before">
+      <button md-menu-item>
+        <md-icon>settings</md-icon>
+        Settings
+      </button>
+      <button md-menu-item>
+        <md-icon>account_box</md-icon>
+        Profile
+      </button>
+      <button md-menu-item>
+        <md-icon>notifications_off</md-icon>
+        Disable notifications
+      </button>
+      <button md-menu-item (click)="signout()">
+        <md-icon>exit_to_app</md-icon>
+        Sign Out
+      </button>
+    </md-menu>
+  </md-toolbar>
+
+  <md-sidenav-container class="app-inner">
+    <md-sidenav #sidemenu class="sidebar-panel" id="sidebar-panel" [mode]="isOver() ? 'over' : 'side'" [opened]="!isOver()" (mouseover)="menuMouseOver()" (mouseout)="menuMouseOut()">
+      <md-nav-list appAccordion class="navigation">
+        <md-list-item appAccordionLink *ngFor="let menuitem of myMenu" group="{{menuitem.state}}">
+          <a appAccordionToggle class="relative" md-ripple [routerLink]="['/', menuitem.state]" *ngIf="menuitem.type === 'link' && menuitem.display">
+            <md-icon>{{ menuitem.icon }}</md-icon>
+            <span>{{ menuitem.name | translate }}</span>
+            <span fxFlex></span>
+            <span class="menu-badge mat-{{ badge.type }}" *ngFor="let badge of menuitem.badge">{{ badge.value }}</span>
+          </a>
+          <a appAccordionToggle class="relative" md-ripple href="{{menuitem.state}}" *ngIf="menuitem.type === 'extLink' && menuitem.display">
+            <md-icon>{{ menuitem.icon }}</md-icon>
+            <span>{{ menuitem.name | translate }}</span>
+            <span fxFlex></span>
+            <span class="menu-badge mat-{{ badge.type }}" *ngFor="let badge of menuitem.badge">{{ badge.value }}</span>
+          </a>
+          <a appAccordionToggle class="relative" md-ripple href="{{menuitem.state}}" target="_blank" *ngIf="menuitem.type === 'extTabLink' && menuitem.display">
+            <md-icon>{{ menuitem.icon }}</md-icon>
+            <span>{{ menuitem.name | translate }}</span>
+            <span fxFlex></span>
+            <span class="menu-badge mat-{{ badge.type }}" *ngFor="let badge of menuitem.badge">{{ badge.value }}</span>
+          </a>
+          <a appAccordionToggle class="relative" md-ripple href="javascript:;" *ngIf="menuitem.type === 'sub' && menuitem.display">
+            <md-icon>{{ menuitem.icon }}</md-icon>
+            <span>{{ menuitem.name | translate }}</span>
+            <span fxFlex></span>
+            <span class="menu-badge mat-{{ badge.type }}" *ngFor="let badge of menuitem.badge">{{ badge.value }}</span>
+            <md-icon class="menu-caret">arrow_drop_down</md-icon>
+          </a>
+          <md-nav-list class="sub-menu" *ngIf="menuitem.type === 'sub' && menuitem.display">
+            <md-list-item *ngFor="let childitem of menuitem.children" routerLinkActive="open">
+              <a [routerLink]="['/', menuitem.state, childitem.state ]" class="relative" md-ripple>{{ childitem.name | translate }}</a>
+            </md-list-item>
+          </md-nav-list>
+        </md-list-item>
+        <md-divider></md-divider>
+        <!-- <md-list-item>
+          <a (click)="addMenuItem()">
+            <md-icon>add</md-icon>
+            <span>Add</span>
+          </a>
+        </md-list-item> -->
+      </md-nav-list>
+    </md-sidenav>
+    <md-sidenav #end align="end" class="chat-panel" mode="over" opened="false">
+      <md-tab-group [selectedIndex]="1" md-stretch-tabs>
+        <md-tab>
+          <ng-template md-tab-label>Today</ng-template>
+          <div class="scroll">
+            <md-list class="pt-1 pb-1">
+              <md-list-item>
+                <div fxLayout="column">
+                  <h2 class="ma-0">{{ today | date:'EEEE' }}</h2>
+                  <h6 class="mat-text-muted ma-0"><span>{{ today | date:'dd' }}</span>&nbsp;<span>{{ today | date:'MMMM' }}</span></h6>
+                </div>
+              </md-list-item>
+            </md-list>
+            <md-nav-list>
+              <md-divider></md-divider>
+              <h3 md-subheader class="text-uppercase font-weight-bold">Stocks</h3>
+              <md-list-item>
+                 <a md-line href="javascript:;">NASDAQ</a>
+                 <span class="mat-text-muted text-md mr-xs ml-xs">4,492.87</span>
+                 <span>-0.29%</span>
+              </md-list-item>
+              <md-list-item>
+                 <a md-line href="javascript:;">NYSE</a>
+                 <span class="mat-text-muted text-md mr-xs ml-xs">10,692.07</span>
+                 <span>-0.53%</span>
+              </md-list-item>
+              <md-list-item>
+                 <a md-line href=javascript:;>DOW J</a>
+                 <span class="mat-text-muted text-md mr-xs ml-xs">17,046.81</span>
+                 <span>-0.14%</span>
+              </md-list-item>
+              <md-list-item>
+                 <a md-line href="javascript:;">APPL</a>
+                 <span class="mat-text-muted text-md mr-xs ml-xs">100,89</span>
+                 <span>+0.75%</span>
+              </md-list-item>
+              <md-divider></md-divider>
+              <h3 md-subheader class="text-uppercase font-weight-bold">Weather</h3>
+              <md-list-item>
+                 <a md-line href="javascript:;">{{ today | date:'shortTime' }}</a>
+                 <p md-line class="mat-text-muted">London</p>
+                 <span class="h4 pe-is-w-blizzard mr-1"></span>
+                 <span class="h4">26°</span>
+              </md-list-item>
+              <md-divider></md-divider>
+              <h3 md-subheader class="text-uppercase font-weight-bold">Todo</h3>
+              <md-list-item>
+                <a md-line href="javascript:;">Learn Angular 2.0</a>
+                <p md-line class="mat-text-muted text-md">2:45PM</p>
+              </md-list-item>
+              <md-list-item>
+                 <a md-line href="javascript:;">Learn Angular Material</a>
+                 <p md-line class="mat-text-muted text-md">3:20PM</p>
+              </md-list-item>
+              <md-list-item>
+                 <a md-line href="javascript:;">Write documentation</a>
+                 <p md-line class="mat-text-muted text-md">6:00PM</p>
+              </md-list-item>
+              <md-divider class="mt-xs mb-xs"></md-divider>
+              <h3 md-subheader class="text-uppercase font-weight-bold">Stats</h3>
+              <md-list-item>
+                <p class="text-md" md-line>Local Storage (4023 / 10690)</p>
+                <md-progress-bar  md-line mode="determinate" color="warn" value="40"></md-progress-bar>
+              </md-list-item>
+              <md-list-item>
+                <p class="text-md" md-line>Cloud Storage (700 / 1030)</p>
+                <md-progress-bar  md-line mode="determinate" color="accent" value="70"></md-progress-bar>
+              </md-list-item>
+              <md-list-item>
+                <p class="text-md" md-line>Local Storage (20 / 100)</p>
+                <md-progress-bar  md-line mode="determinate" value="20"></md-progress-bar>
+              </md-list-item>
+            </md-nav-list>
+          </div>
+        </md-tab>
+        <md-tab>
+          <ng-template md-tab-label>Notifications</ng-template>
+          <div class="scroll">
+            <md-nav-list>
+              <md-list-item>
+                <md-icon md-list-avatar class="mat-text-primary">people</md-icon>
+                <h4 md-line>Social</h4>
+                <p md-line>Ligula Purus Adipiscing</p>
+              </md-list-item>
+              <md-list-item>
+                <md-icon md-list-avatar class="mat-text-warn">local_offer</md-icon>
+                <h4 md-line>Promotions</h4>
+                <p md-line>Etiam Ligula Dapibus</p>
+              </md-list-item>
+              <md-list-item>
+                <md-icon md-list-avatar class="mat-text-accent">info</md-icon>
+                <h4 md-line>Updates</h4>
+                <p md-line>Sollicitudin Euismod Fringilla</p>
+              </md-list-item>
+
+              <md-list-item>
+                <md-icon md-list-avatar class="mat-indigo">delete_sweep</md-icon>
+                <h4 md-line>Removed 6 items from task list</h4>
+                <span class="text-md mat-text-muted" md-line>{{ 1427207139000 | date: 'fullDate' }}</span>
+              </md-list-item>
+              <md-list-item>
+                <md-icon md-list-avatar>check_circle</md-icon>
+                <h4 md-line>Completed 2 projects</h4>
+                <span class="text-md mat-text-muted" md-line>{{ 1427412725000 | date: 'fullDate' }}</span>
+              </md-list-item>
+              <md-list-item>
+                <md-icon md-list-avatar>notifications_paused</md-icon>
+                <h4 md-line>Muted notifications</h4>
+                <span class="text-md mat-text-muted" md-line>{{ 1427546580000 | date: 'fullDate' }}</span>
+              </md-list-item>
+              <md-list-item>
+                <md-icon md-list-avatar>person_add</md-icon>
+                <h4 md-line>Added Joel to contact list</h4>
+                <span class="text-md mat-text-muted" md-line>{{ 1428275520000 | date: 'fullDate' }}</span>
+              </md-list-item>
+              <md-list-item>
+                <md-icon md-list-avatar>phone_missed</md-icon>
+                <h4 md-line>Missed live call from Ellie</h4>
+                <span class="text-md mat-text-muted" md-line>{{ 1428830580000 | date: 'fullDate' }}</span>
+              </md-list-item>
+              <md-list-item>
+                <md-icon md-list-avatar>group_add</md-icon>
+                <h4 md-line>You've been added to HR group</h4>
+                <span class="text-md mat-text-muted" md-line>{{ 1429363920000 | date: 'fullDate' }}</span>
+              </md-list-item>
+            </md-nav-list>
+          </div>
+        </md-tab>
+      </md-tab-group>
+    </md-sidenav>
+    <router-outlet></router-outlet>
+  </md-sidenav-container>
+
+  <!-- Demo Purposes Only -->
+  <button md-fab color="warn" class="mat-fab-bottom-right" *ngIf="showSettingsBtn" (click)="showSettings = true">
+    <md-icon class="md-24">settings</md-icon>
+  </button>
+  <md-card class="settings-panel" *ngIf="showSettingsBtn && showSettings">
+    <md-toolbar color="warn">
+      <span fxFlex>Options</span>
+      <button md-icon-button (click)="showSettings = false">
+        <md-icon>close</md-icon>
+      </button>
+    </md-toolbar>
+    <md-card-content class="demo-checkbox">
+      <div class="pb-1">
+        <md-checkbox [(ngModel)]="collapseSidebar" (change)="compactSidebar = false" [align]="end">Collapsed Sidebar</md-checkbox>
+      </div>
+      <div class="pb-1">
+        <md-checkbox [(ngModel)]="compactSidebar" (change)="collapseSidebar = false" [align]="end">Compact Sidebar</md-checkbox>
+      </div>
+      <div class="pb-1">
+        <md-checkbox [(ngModel)]="boxed" [align]="end">Boxed Layout</md-checkbox>
+      </div>
+      <div class="pb-1">
+        <md-checkbox [(ngModel)]="dark" [align]="end">Dark Mode</md-checkbox>
+      </div>
+      <div class="pb-1">
+        <md-checkbox (change)="root.dir = (root.dir == 'rtl' ? 'ltr' : 'rtl')" [align]="end">RTL</md-checkbox>
+      </div>
+      <div class="pb-0">
+        <md-select placeholder="Language" class="mt-1" [(ngModel)]="currentLang" #langSelect="ngModel" (ngModelChange)="translate.use(currentLang)">
+          <md-option *ngFor="let lang of translate.getLangs()" [value]="lang">{{ lang }}</md-option>
+        </md-select>
+     </div>
+    </md-card-content>
+  </md-card>
+  <!-- /Demo Purposes Only -->
+
+</div>

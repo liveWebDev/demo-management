@@ -1,0 +1,32 @@
+<p class="ma-1">Move stuff between these two containers. Note how the stuff gets inserted near the mouse pointer? Great stuff.</p>
+
+<div  fxLayout="row" fxLayoutWrap="wrap">
+  <md-card fxFlex>
+    <md-list [dragula]='"first-bag"'>
+      <ng-template ngFor let-todo [ngForOf]="todos">
+        <md-list-item>
+          <div  fxLayout="row" fxLayoutAlign="start center" style="width: 100%;">
+            <div fxFlex>
+              <md-checkbox [checked]="todo.finished">{{todo.name}}</md-checkbox>
+            </div>
+            <div><md-icon>more_horiz</md-icon></div>
+          </div>
+        </md-list-item>
+      </ng-template>
+    </md-list>
+  </md-card>
+  <md-card fxFlex>
+    <md-nav-list [dragula]='"first-bag"'>
+      <md-list-item *ngFor="let link of links">
+        <div  fxLayout="row" fxLayoutAlign="start center" style="width: 100%;">
+          <div fxFlex>
+            <a md-line href="http://www.google.com" fxFlex>{{ link.name }}</a>
+          </div>
+          <div>
+            <md-icon>info</md-icon>
+          </div>
+        </div>
+      </md-list-item>
+    </md-nav-list>
+  </md-card>
+</div>

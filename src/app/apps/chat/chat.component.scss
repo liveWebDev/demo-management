@@ -1,0 +1,36 @@
+@import "../../../assets/styles/scss/components/chat";
+:host {
+  margin-left: -5px;
+  margin-right: -5px;
+  margin-top: -5px;
+  display: block;
+}
+:host /deep/ {
+  .mat-sidenav-content {
+    padding: 0;
+  }
+  md-toolbar + hr, md-card-content + hr {
+    margin-left: -5px;
+    margin-right: -5px;
+  }
+}
+
+$mat-toolbar-height-desktop: 64px !default;
+$mat-toolbar-height-mobile-portrait: 56px !default;
+$mat-toolbar-height-mobile-landscape: 48px !default;
+
+.mat-card-top {
+  margin-top: -($mat-toolbar-height-desktop);
+}
+
+@media ($mat-xsmall) and (orientation: portrait) {
+  .mat-card-top {
+    margin-top: -($mat-toolbar-height-mobile-portrait);
+  }
+}
+
+@media ($mat-small) and (orientation: landscape) {
+  .mat-card-top {
+    margin-top: -($mat-toolbar-height-mobile-landscape);
+  }
+}

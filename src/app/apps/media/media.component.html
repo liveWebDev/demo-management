@@ -1,0 +1,18 @@
+<md-toolbar>
+  <button md-button>New album</button>
+  <span fxFlex></span>
+  <button md-icon-button><md-icon>settings</md-icon></button>
+  <button md-icon-button><md-icon>chevron_left</md-icon></button>
+  <button md-icon-button><md-icon>chevron_right</md-icon></button>
+</md-toolbar>
+
+<md-grid-list cols="3">
+  <md-grid-tile *ngFor="let id of images" rowHeight="2:1">
+    <img src="assets/images/unsplash/{{id}}.jpg" alt="Card image cap"/>
+    <md-grid-tile-footer>
+      <h3 md-line>{{ id }}</h3>
+      <span md-line>Gallery image: {{ id }}</span>
+      <md-icon>favorite</md-icon>
+    </md-grid-tile-footer>
+  </md-grid-tile>
+</md-grid-list>

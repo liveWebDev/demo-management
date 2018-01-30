@@ -1,0 +1,13 @@
+<md-input-container style="width: 100%" class="mb-1">
+  <input mdInput placeholder="Type to filter the name column..." required (keyup)='updateFilter($event)'>
+</md-input-container>
+<ngx-datatable
+class='material'
+[columns]="columns"
+[columnMode]="'force'"
+[headerHeight]="50"
+[footerHeight]="50"
+[rowHeight]="'auto'"
+[limit]="10"
+[rows]='rows'>
+</ngx-datatable>

@@ -1,0 +1,374 @@
+<div fxLayout="row" fxLayoutWrap="wrap">
+  <div fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100">
+    <md-card class="card-widget mat-teal">
+      <div md-card-widget>
+        <div md-card-float-icon>
+          <md-icon>local_offer</md-icon>
+        </div>
+        <div class="pl-0">
+          <h5 md-card-widget-title>103</h5>
+          <p>Campaigns</p>
+        </div>
+      </div>
+    </md-card>
+  </div>
+  <div fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100">
+    <md-card class="card-widget mat-purple">
+      <div md-card-widget>
+        <div md-card-float-icon>
+          <md-icon>phone</md-icon>
+        </div>
+        <div class="pl-0">
+          <h5 md-card-widget-title>230</h5>
+          <p>Customers</p>
+        </div>
+      </div>
+    </md-card>
+  </div>
+  <div fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100">
+    <md-card class="card-widget mat-red">
+      <div md-card-widget>
+        <div md-card-float-icon>
+          <md-icon>notifications</md-icon>
+        </div>
+        <div class="pl-0">
+          <h5 md-card-widget-title>323</h5>
+          <p>Queries</p>
+        </div>
+      </div>
+    </md-card>
+  </div>
+  <div fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100">
+    <md-card class="card-widget mat-indigo">
+      <div md-card-widget>
+        <div md-card-float-icon>
+          <md-icon>email</md-icon>
+        </div>
+        <div class="pl-0">
+          <h5 md-card-widget-title>870</h5>
+          <p>Opens</p>
+        </div>
+      </div>
+    </md-card>
+  </div>
+</div>
+
+<div fxLayout="row" fxLayoutWrap="wrap">
+	<div fxFlex.gt-sm="33.33%" fxFlex="100">
+		<md-card>
+      <md-card-subtitle fxLayout="row" fxLayoutAlign="start center">
+        Revenue &nbsp; <span class="font-weight-bold mat-text-primary">+458,90</span>
+        <span fxFlex></span>
+        <button md-icon-button md-button-sm [md-menu-trigger-for]="card1" aria-label="Open card menu">
+          <md-icon>more_vert</md-icon>
+        </button>
+      </md-card-subtitle>
+      <md-menu #card1="mdMenu" x-position="before">
+        <button md-menu-item>
+          <md-icon>settings</md-icon>
+          Settings
+        </button>
+        <button md-menu-item>
+          <md-icon>more</md-icon>
+          View More
+        </button>
+        <button md-menu-item>
+          <md-icon>notifications_off</md-icon>
+          Disable notifications
+        </button>
+        <button md-menu-item>
+          <md-icon>exit_to_app</md-icon>
+          Remove Panel
+        </button>
+      </md-menu>
+			<md-card-content>
+        <canvas height="200" baseChart class="chart"
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [options]="barChartOptions"
+          [colors]="chartColors"
+          [legend]="barChartLegend"
+          [chartType]="barChartType"></canvas>
+      </md-card-content>
+		</md-card>
+	</div>
+	<div fxFlex.gt-sm="33.33%" fxFlex.gt-xs="50" fxFlex="100">
+		<md-card>
+      <md-card-subtitle fxLayout="row" fxLayoutAlign="start center">
+        Yearly Sales &nbsp; <span class="font-weight-bold mat-text-warn">-46,68</span>
+        <span fxFlex></span>
+        <button md-icon-button md-button-sm [md-menu-trigger-for]="card2" aria-label="Open card menu">
+          <md-icon>more_vert</md-icon>
+        </button>
+      </md-card-subtitle>
+      <md-menu #card2="mdMenu" x-position="before">
+        <button md-menu-item>
+          <md-icon>settings</md-icon>
+          Settings
+        </button>
+        <button md-menu-item>
+          <md-icon>more</md-icon>
+          View More
+        </button>
+        <button md-menu-item>
+          <md-icon>notifications_off</md-icon>
+          Disable notifications
+        </button>
+        <button md-menu-item>
+          <md-icon>exit_to_app</md-icon>
+          Remove Panel
+        </button>
+      </md-menu>
+			<md-card-content>
+        <canvas height="200" baseChart class="chart"
+          [datasets]="ComboChartData"
+          [labels]="comboChartLabels"
+          [options]="ComboChartOptions"
+          [colors]="chartColors"
+          [legend]="comboChartLegend"
+          [chartType]="barChartType"></canvas>
+      </md-card-content>
+		</md-card>
+	</div>
+	<div fxFlex.gt-sm="33.33%" fxFlex.gt-xs="50" fxFlex="100">
+		<md-card>
+      <md-card-subtitle fxLayout="row" fxLayoutAlign="start center">
+        Sales Report &nbsp; <span class="font-weight-bold mat-text-accent">+2,50%</span>
+        <span fxFlex></span>
+        <button md-icon-button md-button-sm [md-menu-trigger-for]="card3" aria-label="Open card menu">
+          <md-icon>more_vert</md-icon>
+        </button>
+      </md-card-subtitle>
+      <md-menu #card3="mdMenu" x-position="before">
+        <button md-menu-item>
+          <md-icon>settings</md-icon>
+          Settings
+        </button>
+        <button md-menu-item>
+          <md-icon>more</md-icon>
+          View More
+        </button>
+        <button md-menu-item>
+          <md-icon>notifications_off</md-icon>
+          Disable notifications
+        </button>
+        <button md-menu-item>
+          <md-icon>exit_to_app</md-icon>
+          Remove Panel
+        </button>
+      </md-menu>
+			<md-card-content>
+        <canvas height="200" baseChart class="chart"
+          [datasets]="bubbleChartData"
+          [labels]="comboChartLabels"
+          [options]="ComboChartOptions"
+          [legend]="comboChartLegend"
+          [chartType]="bubbleChartType"></canvas>
+      </md-card-content>
+		</md-card>
+	</div>
+</div>
+
+<div fxLayout="row" fxLayoutWrap="wrap">
+  <div fxFlex.gt-sm="66.66%" fxFlex="100">
+    <ngx-datatable
+      class="material"
+      [rows]="rows"
+      [columnMode]="'force'"
+      [headerHeight]="50"
+      [footerHeight]="0"
+      [rowHeight]="'auto'">
+      <ngx-datatable-column name="Project">
+        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+          {{row['project']}}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Due Date">
+        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+          {{row['date'] | date: 'MMMM dd'}}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Progress">
+        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+          <md-progress-bar mode="determinate" value="{{row['progress']}}" color="primary"></md-progress-bar>
+        </ng-template>
+      </ngx-datatable-column>
+    </ngx-datatable>
+  </div>
+  <div fxFlex.gt-sm="33.33%" fxFlex="100">
+    <md-card>
+      <md-card-title>Newsfeed</md-card-title>
+      <md-card-subtitle>Stories posted today</md-card-subtitle>
+      <hr>
+      <md-list>
+        <ng-template let-item let-last="last" ngFor [ngForOf]="messages">
+          <md-list-item>
+            <img md-list-avatar src="{{item.photo}}" alt="">
+            <h3 md-line> {{item.from}} </h3>
+            <p md-line> {{item.subject}} - {{item.message}} </p>
+          </md-list-item>
+        </ng-template>
+      </md-list>
+    </md-card>
+  </div>
+</div>
+
+<div fxLayout="row" fxLayoutWrap="wrap">
+  <div fxFlex.gt-md="50" fxFlex="100">
+    <md-card>
+      <div fxLayout="row" fxLayoutAlign="center center" class="mr-1">
+        <md-card-header class="mt-0">
+          <img md-card-avatar src="assets/images/avatar.jpg">
+          <md-card-subtitle>Revenue &nbsp; <span class="font-weight-bold mat-text-primary">+458,90</span></md-card-subtitle>
+          <md-card-title>Gerald Morris</md-card-title>
+        </md-card-header>
+        <span fxFlex></span>
+        <button md-icon-button md-button-sm [md-menu-trigger-for]="card1" aria-label="Open card menu">
+          <md-icon>more_vert</md-icon>
+        </button>
+      </div>
+      <div class="card-image-header" style="background-image: url(assets/images/unsplash/2.jpg); height: 240px;"></div>
+      <md-card-content>
+        <button md-fab md-fab-card-float class="mr-1" color="warn"><md-icon>share</md-icon></button>
+        <p class="ma-0">Phileas Fogg and Aouda went on board, where they found Fix already installed. Below deck was a square cabin, of which the walls bulged out in the form of cots, above a circular divan; in the centre was a table provided with a swinging lamp.</p>
+      </md-card-content>
+      <hr>
+      <md-card-actions>
+        <div fxLayout="row">
+          <button md-icon-button>
+            <md-icon>share</md-icon>
+          </button>
+          <button md-icon-button>
+            <md-icon>favorite</md-icon>
+          </button>
+          <span fxFlex></span>
+          <button md-button>More info</button>
+          <button md-button>Download</button>
+        </div>
+      </md-card-actions>
+    </md-card>
+  </div>
+  <div fxFlex.gt-md="50" fxFlex="100">
+    <md-card>
+      <md-card-content class="pb-0">
+        <div fxLayout="row" fxLayoutAlign="start center" class="mb-2">
+          <div fxFlex>
+            <h3 class="mt-0 mb-0">London, UK</h3>
+            <h6 class="mt-0 mb-0">Saturday 2:00 AM</h6>
+            <p class="mat-text-muted mt-0 mb-0">Mostly Sunny</p>
+          </div>
+          <span fxFlex></span>
+          <div fxFlex class="text-xs-right">
+            <h1 class="text-xxl mt-0 mb-0">
+              <span class="pe-is-w-moon-sea mat-text-accent"></span>
+              <span>6<sup></sup></span>
+            </h1>
+          </div>
+        </div>
+        <div fxLayout="row" layout-align="center" class="mb-2 text-md">
+          <div class="pr-1" fxFlex>
+            <div fxLayout="row">          
+              <span>Pressure</span>
+              <span fxFlex></span>
+              <span>30.09</span>
+              <span>hPa</span>
+            </div>
+
+            <div fxLayout="row">          
+              <span>Visibility</span>
+              <span fxFlex></span>
+              <span>11.27</span>
+              <span>km</span>
+            </div>
+
+            <div fxLayout="row">          
+              <span>Light</span>
+              <span fxFlex></span>
+              <span>0.00</span>
+            </div>
+
+            <div fxLayout="row">          
+              <span>Light</span>
+              <span fxFlex></span>
+              <span>16</span>
+              <span>C</span>
+            </div>
+          </div>
+          <div class="pl-1" fxFlex>
+            <div fxLayout="row">          
+              <span>Humidity</span>
+              <span fxFlex></span>
+              <span>94</span>
+              <span>%</span>
+            </div>
+
+            <div fxLayout="row">          
+              <span>Precp.</span>
+              <span fxFlex></span>
+              <span></span>
+              <span>mm</span>
+            </div>
+
+            <div fxLayout="row">          
+              <span>Snow Depth</span>
+              <span fxFlex></span>
+              <span></span>
+            </div>
+
+            <div fxLayout="row">          
+              <span>Wind Gust</span>
+              <span fxFlex></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </md-card-content>
+      <md-card-content class="mat-indigo">
+        <div fxLayout="row" class="text-xs-center">
+          <div fxFlex>
+            <div class="text-md">6 km/h</div>
+            <div class="text-md pb-xs"><md-icon>call_received</md-icon></div>
+            <div class="text-md">MON</div>
+            <h3 class="block pe-is-w-blizzard mt-0 mb-0 pb-xs"></h3>
+            <strong class="degree-value">10</strong>
+          </div>
+          <div fxFlex>
+            <div class="text-md">6 km/h</div>
+            <div class="text-md pb-xs"><md-icon>call_received</md-icon></div>
+            <div class="text-md">TUE</div>
+            <h2 class="block pe-is-w-eclipse-1 mt-0 mb-0 pb-xs"></h2>
+            <strong class="degree-value">8</strong>
+          </div>
+          <div fxFlex>
+            <div class="text-md">6 km/h</div>
+            <div class="text-md pb-xs"><md-icon>call_made</md-icon></div>
+            <div class="text-md">WED</div>
+            <h2 class="block pe-is-w-fog-3 mt-0 mb-0 pb-xs"></h2>
+            <strong class="degree-value">6</strong>
+          </div>
+          <div fxFlex>
+            <div class="text-md">6 km/h</div>
+            <div class="text-md pb-xs"><md-icon>arrow_upward</md-icon></div>
+            <div class="text-md">THU</div>
+            <h2 class="block pe-is-w-hail-day-2 mt-0 mb-0 pb-xs"></h2>
+            <strong class="degree-value">6</strong>
+          </div>
+          <div fxFlex>
+            <div class="text-md">6 km/h</div>
+            <div class="text-md pb-xs"><md-icon>call_received</md-icon></div>
+            <div class="text-md">FRI</div>
+            <h2 class="block pe-is-w-mix-rainfall-1 mt-0 mb-0 pb-xs"></h2>
+            <strong class="degree-value">9</strong>
+          </div>
+          <div fxFlex>
+            <div class="text-md">6 km/h</div>
+            <div class="text-md pb-xs"><md-icon>arrow_forward</md-icon></div>
+            <div class="text-md">SAT</div>
+            <h2 class="block pe-is-w-moon-sea mt-0 mb-0 pb-xs"></h2>
+            <strong class="degree-value">8</strong>
+          </div>
+        </div>
+      </md-card-content>
+    </md-card>
+  </div>
+</div>

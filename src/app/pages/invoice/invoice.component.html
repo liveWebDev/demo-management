@@ -1,0 +1,93 @@
+<md-card>
+  <md-card-content>
+    <div class="mb-1">
+      <h1 class="mt-0"><strong>INVOICE</strong></h1>
+      <a href="javascript:;">company@address.com</a>
+    </div>
+
+    <div fxLayout="row"  fxLayoutWrap="wrap">
+      <div fxFlex.gt-xs="50" fxFlex="100">
+        <h4>Client</h4>
+        <div  fxLayout="column">
+          <span>Invoice No: #0001</span>
+          <span>Date issued: 01 Jun 2017</span>
+          <span>Due date: 31 May 2017</span>
+        </div>
+      </div>
+      <div fxFlex.gt-xs="50" fxFlex="100" class="text-sm-right text-xs-left">
+        <h6 class="my-0">Company LLC</h6>
+        <div  fxLayout="column">
+        <span>company@address.com</span>
+        <span>1234 Main</span>
+        <span>Apt. 4B</span>
+        <span>Springfield, ST 54321</span>
+      </div>
+      </div>
+    </div>
+  </md-card-content>
+
+  <md-card-content class="pl-0 pr-0">
+    <ngx-datatable
+      class="material"
+      [rows]="invoiceItems"
+      [columnMode]="'flex'"
+      [headerHeight]="50"
+      [footerHeight]="0"
+      [rowHeight]="'auto'">
+      <ngx-datatable-column name="Description" [flexGrow]="4">
+        <ng-template ngx-datatable-cell-template let-row="row">
+          <strong>{{row.title}}</strong><br/><span class="mat-text-muted">{{row.subtitle}}</span>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Unit Price" [flexGrow]="1">
+        <ng-template ngx-datatable-cell-template let-row="row">
+          <strong>{{row.price | currency:'USD':true:'1.2-2'}}</strong>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Quantity" [flexGrow]="1">
+        <ng-template ngx-datatable-cell-template let-row="row">
+          <strong>{{row.quantity}}</strong>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Amount" [flexGrow]="1">
+        <ng-template ngx-datatable-cell-template let-row="row">
+          <strong>{{ (row.price * row.quantity) | currency:'USD':true:'1.2-2'}}</strong>
+        </ng-template>
+      </ngx-datatable-column>
+    </ngx-datatable>
+  </md-card-content>
+
+  <hr>
+  <md-card-content>
+    <div  fxLayout="row"  fxLayoutWrap="wrap">
+      <div fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100" class="mt-1 mb-1">
+        <h6 class="text-uppercase text-md ma-0 text-bold">Subtotal</h6>
+        <h3 class="ma-0">{{getSubTotal() | currency:'USD':true:'1.2-2'}}</h3>
+      </div>
+      <div fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100" class="mt-1 mb-1 text-sm-right text-md-left">
+        <h6 class="text-uppercase text-md ma-0 text-bold">Tax (15%)</h6>
+        <h3 class="ma-0">{{getCalculatedTax() | currency:'USD':true:'1.2-2'}}</h3>
+      </div>
+      <div fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100" class="mt-1 mb-1">
+        <h6 class="text-uppercase text-md ma-0 text-bold">Discount</h6>
+        <h3 class="ma-0">$0.00</h3>
+      </div>
+      <div fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100" class="mt-1 mb-1 text-xs-left text-sm-right">
+        <h6 class="text-uppercase text-sm ma-0 text-bold">Total</h6>
+        <h3 class="ma-0 mat-text-accent">{{ getTotal() | currency:'USD':true:'1.2-2'}}</h3>
+      </div>
+    </div>
+  </md-card-content>
+  <hr>
+
+  <md-card-content>
+    <p class="text-md">
+      <strong>
+        PAYMENT TERMS AND POLICIES
+      </strong>
+      All accounts are to be paid within 7 days from receipt of invoice. To be paid by cheque or credit card or direct payment online. If account is not paid within 7 days the credits details supplied as confirmation of work undertaken will be charged the agreed
+      quoted fee noted above. If the Invoice remails unpaid. our dept recovery agency, Urban, may charge you a fee of 25% of the unpaid portion of the
+      invoice amount and other legal and collection costs not covered by the fee.
+    </p>
+  </md-card-content>
+</md-card>

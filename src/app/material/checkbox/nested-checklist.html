@@ -1,0 +1,24 @@
+<md-card>
+  <md-toolbar color="primary">
+    <span>Tasks</span>
+  </md-toolbar>
+  <md-card-content>
+    <ul>
+      <li *ngFor="let task of tasks">
+        <md-checkbox [(ngModel)]="task.completed"
+                     [checked]="allComplete(task)"
+                     [indeterminate]="someComplete(task.subtasks)"
+                     (change)="setAllCompleted(task.subtasks, $event.checked)">
+          <h6 class="ma-0">{{task.name}}</h6>
+        </md-checkbox>
+        <ul class="ml-3">
+          <li *ngFor="let subtask of task.subtasks">
+            <md-checkbox [(ngModel)]="subtask.completed">
+              {{subtask.name}}
+            </md-checkbox>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </md-card-content>
+</md-card>

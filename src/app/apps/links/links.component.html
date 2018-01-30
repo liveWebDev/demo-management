@@ -1,0 +1,303 @@
+<ngx-datatable style="margin-top: 3%"  class="material" *ngIf="!opentabs" [rows]="customData.rows" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
+  [rowHeight]="'auto'" [externalPaging]="true" [count]="customData.count"   [offset]="customData.offset" [limit]="customData.limit"
+  (page)='onPage($event)'>
+  <ngx-datatable-column name="Transport ID" prop="id"></ngx-datatable-column>
+  <ngx-datatable-column name="Primary SID" prop="Primary SID">
+      <ng-template let-row="row" let-value="value" ngx-datatable-cell-template style="text-align: right">
+       <div *ngIf="row.shipment && row.shipment[0]">
+            {{row.shipment[0].shipment_id}}
+        </div>
+      </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Fahrer" prop="fahrer"></ngx-datatable-column>
+  <ngx-datatable-column name="ADR" prop="adr"></ngx-datatable-column>
+  <ngx-datatable-column name="Luftfracht" prop="luftfracht"></ngx-datatable-column>
+  <ngx-datatable-column name="Empfehlung" prop="rampe"></ngx-datatable-column>
+  <ngx-datatable-column name="Prozess">
+    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template style="text-align: right">
+      <div style="color:grey">
+        Gestartet
+      </div>
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Prüfung">
+    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template style="text-align: right">
+       <button md-raised-button color="primary" *ngIf="(row.forklift_id == 0 || row.forklift_id == user.user.id) && user.user.type == 3" (click)="sendData(row)">Bearbeiten</button>
+       <button md-raised-button color="primary" *ngIf="row.forklift_id == 0 && user.user.id && user.user.type == 4" (click)="openTabs(row.id,'start',row.forklift_id, openTabs)">Starten</button>
+       <button md-raised-button *ngIf="row.forklift_id == user.user.id && user.user.type == 4" color="primary" (click)="openTabs(row.id,'edit',row.forklift_id,row)">Bearbeiten</button>
+    </ng-template>
+  </ngx-datatable-column>
+</ngx-datatable>
+<!--<div *ngIf="opentabs&& currentTransport.shipment.length>0"  style="margin-top: 3% ;margin-left:7%" >
+  <b>Chemikalientransport {{currentTransport.shipment[0]['shipment_id']}} von {{currentTransport.fahrzeughalter}} / {{currentTransport.fahrer}} nach {{currentTransport.destination}} </b>
+</div>-->
+<md-tab-group *ngIf="opentabs" style="margin-top: 3%" [selectedIndex]="selectedIndex">
+  <md-tab label="1. Documents">
+    <ngx-datatable  class="material  margin2Top" [rows]="documentsQuestions.rows" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
+      [rowHeight]="'auto'" [externalPaging]="true" [count]="documentsQuestions.count" [offset]="documentsQuestions.offset"
+      [limit]="documentsQuestions.limit" (page)='onPage($event)'>
+      <ngx-datatable-column maxWidth="60" name="Nr." prop="sr" class="serial-number"></ngx-datatable-column>
+      <ngx-datatable-column name="Dokumentenkontrolle" prop="question">
+          <ng-template let-row="row" let-value="value" ngx-datatable-cell-template style="text-align: right">
+              <div style="width:100%">
+                  <div style="width: 65%;display: inline-block;">{{row.question}}</div>  
+                 <div style="width: 34%;display: inline-block;text-align: right;">
+                 <ng-template let-column="column" ngx-datatable-header-template style="text-align: right">
+                   Prüfung
+                </ng-template>
+                  <md-radio-group [(ngModel)]="fahrzeugausweis_21" prop="ngModel">
+                  <md-radio-button class="green" value="1">Ja</md-radio-button>
+                  <md-radio-button class="red" value="2" [checked]="true" style="background-color: #e74c3c">Nein</md-radio-button>
+                  <md-radio-button class="grey" value="3" style="background-color: #ecf0f1">N.A</md-radio-button>
+                  </md-radio-group>
+                 </div>
+           </div>
+              <div *ngIf="row.question2" style="display:inline-block">
+                  {{row.question2}}   <input type="text" [ngModel]="adr_schulungsbescheinigung_22_answeis_nr">
+              </div>
+              <div *ngIf="row.question3" style="display:inline-block">
+                  {{row.question3}}   <input type="text" [ngModel]="adr_schulungsbescheinigung_22_gultig_bis">
+              </div>
+          </ng-template> 
+      </ngx-datatable-column>
+    </ngx-datatable>
+    <div class="row margin2Bottem">
+        <button md-raised-button md-button-sm class="mr-1" (click)="changeTab('back')">Zurück</button>
+        <button md-raised-button md-button-sm class="mr-1"  (click)="changeTab('next')">Weiter</button>
+    </div>
+  </md-tab>
+
+  <md-tab label="2. Conditions">
+    <ngx-datatable class="material margin2Top" [rows]="stateControl.rows" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
+      [rowHeight]="'auto'" [externalPaging]="true" [count]="stateControl.count" [offset]="stateControl.offset" [limit]="stateControl.limit"
+      (page)='onPage($event)'>
+      <ngx-datatable-column maxWidth="60" name="Nr." prop="sr" class="serial-number"></ngx-datatable-column>
+      <ngx-datatable-column name="Conditions" prop="question">
+          <ng-template let-row="row" let-value="value" ngx-datatable-cell-template style="text-align: right">
+              <div style="width:100%">
+                  <div style="width: 65%;display: inline-block;">{{row.question}}</div>  
+                 <div style="width: 34%;display: inline-block;text-align: right;">
+                 <ng-template let-column="column" ngx-datatable-header-template style="text-align: right">
+                   Prüfung
+                </ng-template>
+                  <md-radio-group [(ngModel)]="bewegungssicherung_31" prop="ngModel">
+                  <md-radio-button class="green" value="1">Ja</md-radio-button>
+                  <md-radio-button class="red" value="2" [checked]="true" style="background-color: #e74c3c">Nein</md-radio-button>
+                  <md-radio-button class="grey" value="3" style="background-color: #ecf0f1">N.A</md-radio-button>
+                  </md-radio-group>
+                 </div>
+           </div>
+              <div *ngIf="row.question2">
+                  {{row.question2}} 
+              </div>
+              <div *ngIf="row.question3">
+                  {{row.question3}} 
+              </div>
+              <div *ngIf="row.question4">
+                  {{row.question4}} 
+              </div>
+              <div *ngIf="row.question5">
+                  {{row.question5}} 
+              </div>
+          </ng-template> 
+      </ngx-datatable-column>
+    </ngx-datatable>
+   <div class="row margin2Bottem">
+      <button md-raised-button md-button-sm class="mr-1" (click)="changeTab('back')">Zurück</button>
+      <button md-raised-button md-button-sm class="mr-1"  (click)="changeTab('next')">Weiter</button>
+    </div>
+  </md-tab>
+  <md-tab label="3. ADR">
+    <ngx-datatable class="material  margin2Top" [rows]="controlOfTransportUnit.rows" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
+      [rowHeight]="'auto'" [externalPaging]="true" [count]="controlOfTransportUnit.count" [offset]="controlOfTransportUnit.offset"
+      [limit]="controlOfTransportUnit.limit" (page)='onPage($event)'>
+      <ngx-datatable-column maxWidth="60" name="Nr." prop="sr" class="serial-number"></ngx-datatable-column>
+         <ngx-datatable-column name="Conditions" prop="question">
+          <ng-template let-row="row" let-value="value" ngx-datatable-cell-template style="text-align: right">
+              <div style="width:100%">
+                <div style="width: 65%;display: inline-block;">{{row.question}}</div>  
+                 <div style="width: 34%;display: inline-block;text-align: right;">
+                 <ng-template let-column="column" ngx-datatable-header-template style="text-align: right">
+                   Prüfung
+                </ng-template>
+                  <md-radio-group [(ngModel)]="werbefrei_fuer_tierfutter_41" prop="ngModel">
+                  <md-radio-button class="green" value="1">Ja</md-radio-button>
+                  <md-radio-button class="red" value="2" [checked]="true" style="background-color: #e74c3c">Nein</md-radio-button>
+                  <md-radio-button class="grey" value="3" style="background-color: #ecf0f1">N.A</md-radio-button>
+                  </md-radio-group>
+                 </div>
+           </div>
+              <div *ngIf="row.question2">
+                  {{row.question2}}  <input type="text" [(ngModel)]="lebensmittel_futtermittel_42">
+              </div>
+              <div  style="width:100%;margin-top:1%" *ngIf="row.question3">
+                 <div style="width: 65%;display: inline-block;">{{row.question3}}</div>  
+                 <div style="width: 34%;display: inline-block;text-align: right;">
+                 <ng-template let-column="column" ngx-datatable-header-template style="text-align: right">
+                   Prüfung
+                </ng-template>
+                  <md-radio-group [(ngModel)]="persoenliche_schutzausruestung_43" prop="ngModel">
+                  <md-radio-button class="green" value="1">Ja</md-radio-button>
+                  <md-radio-button class="red" value="2" [checked]="true" style="background-color: #e74c3c">Nein</md-radio-button>
+                  <md-radio-button class="grey" value="3" style="background-color: #ecf0f1">N.A</md-radio-button>
+                  </md-radio-group>
+                 </div>
+              </div>
+              <div style="width:100%;margin-top:1%" *ngIf="row.question4">
+                <div style="width: 65%;display: inline-block;">{{row.question4}}</div>  
+                 <div style="width: 34%;display: inline-block;text-align: right;">
+                 <ng-template let-column="column" ngx-datatable-header-template style="text-align: right">
+                   Prüfung
+                </ng-template>
+                  <md-radio-group [(ngModel)]="persoenliche_schutzausruestung_43_schutzbrille" prop="ngModel">
+                  <md-radio-button class="green" value="1">Ja</md-radio-button>
+                  <md-radio-button class="red" value="2" [checked]="true" style="background-color: #e74c3c">Nein</md-radio-button>
+                  <md-radio-button class="grey" value="3" style="background-color: #ecf0f1">N.A</md-radio-button>
+                  </md-radio-group>
+                 </div>
+              </div>
+              <div style="width:100%;margin-top:1%" *ngIf="row.question5">
+                  <div style="width: 65%;display: inline-block;">{{row.question5}}</div>  
+                 <div style="width: 34%;display: inline-block;text-align: right;">
+                 <ng-template let-column="column" ngx-datatable-header-template style="text-align: right">
+                   Prüfung
+                </ng-template>
+                  <md-radio-group [(ngModel)]="persoenliche_schutzausruestung_43_chem_handschuhe" prop="ngModel">
+                  <md-radio-button class="green" value="1">Ja</md-radio-button>
+                  <md-radio-button class="red" value="2" [checked]="true" style="background-color: #e74c3c">Nein</md-radio-button>
+                  <md-radio-button class="grey" value="3" style="background-color: #ecf0f1">N.A</md-radio-button>
+                  </md-radio-group>
+                 </div> 
+              </div>
+              <div style="width:100%;margin-top:1%" *ngIf="row.question6">
+                  <div style="width: 65%;display: inline-block;">{{row.question6}}</div>  
+                 <div style="width: 34%;display: inline-block;text-align: right;">
+                 <ng-template let-column="column" ngx-datatable-header-template style="text-align: right">
+                   Prüfung
+                </ng-template>
+                  <md-radio-group [(ngModel)]="persoenliche_schutzausruestung_43_warnweste" prop="ngModel">
+                  <md-radio-button class="green" value="1">Ja</md-radio-button>
+                  <md-radio-button class="red" value="2" [checked]="true" style="background-color: #e74c3c">Nein</md-radio-button>
+                  <md-radio-button class="grey" value="3" style="background-color: #ecf0f1">N.A</md-radio-button>
+                  </md-radio-group>
+                 </div> 
+              </div>
+              <div style="width:100%;margin-top:1%" *ngIf="row.question7">
+                  <div style="width: 65%;display: inline-block;">{{row.question7}}</div>  
+                 <div style="width: 34%;display: inline-block;text-align: right;">
+                 <ng-template let-column="column" ngx-datatable-header-template style="text-align: right">
+                   Prüfung
+                </ng-template>
+                  <md-radio-group [(ngModel)]="persoenliche_schutzausruestung_43_vollschutzmaske" prop="ngModel">
+                  <md-radio-button class="green" value="1">Ja</md-radio-button>
+                  <md-radio-button class="red" value="2" [checked]="true" style="background-color: #e74c3c">Nein</md-radio-button>
+                  <md-radio-button class="grey" value="3" style="background-color: #ecf0f1">N.A</md-radio-button>
+                  </md-radio-group>
+                 </div> 
+              </div>
+              <div style="width:100%;margin-top:1%" *ngIf="row.question8">
+                  <div style="width: 65%;display: inline-block;">{{row.question8}}</div>  
+                 <div style="width: 34%;display: inline-block;text-align: right;">
+                 <ng-template let-column="column" ngx-datatable-header-template style="text-align: right">
+                   Prüfung
+                </ng-template>
+                  <md-radio-group [(ngModel)]="persoenliche_schutzausruestung_43_augenspuelflasche" prop="ngModel">
+                  <md-radio-button class="green" value="1">Ja</md-radio-button>
+                  <md-radio-button class="red" value="2" [checked]="true" style="background-color: #e74c3c">Nein</md-radio-button>
+                  <md-radio-button class="grey" value="3" style="background-color: #ecf0f1">N.A</md-radio-button>
+                  </md-radio-group>
+                 </div> 
+              </div>
+          </ng-template> 
+      </ngx-datatable-column>
+    </ngx-datatable>
+   <div class="row margin2Bottem">
+      <button md-raised-button md-button-sm class="mr-1" (click)="changeTab('back')">Zurück</button>
+      <button md-raised-button md-button-sm class="mr-1"  (click)="changeTab('next')">Weiter</button>
+    </div>
+  </md-tab>
+  <md-tab label="4. Packaging">
+    <md-card>
+      <md-card-title><b>Packaging</b></md-card-title>
+        <md-card-content>
+           <ngx-datatable class="material" [rows]="protectionOfPublic.rows" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
+      [rowHeight]="'auto'" [externalPaging]="true" [count]="protectionOfPublic.count" [offset]="protectionOfPublic.offset"
+      [limit]="protectionOfPublic.limit" (page)='onPage($event)'>
+      <ngx-datatable-column maxWidth="60" name="Nr." prop="sr" class="serial-number"></ngx-datatable-column>
+      <ngx-datatable-column name="Packaging" prop="question">
+      </ngx-datatable-column>
+      <ngx-datatable-column maxWidth="280" name="*N.A. = nicht anwendbar" sortable="false" prop="id">
+        <ng-template let-column="column" ngx-datatable-header-template style="text-align: right">
+          Prüfung
+        </ng-template>
+        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template style="text-align: right">
+          <md-radio-group>
+            <md-radio-button class="green" value="ja">Ja</md-radio-button>
+            <md-radio-button class="red" value="nein" [checked]="true" style="background-color: #e74c3c">Nein</md-radio-button>
+            <md-radio-button class="grey" value="n.a" style="background-color: #ecf0f1">N.A</md-radio-button>
+          </md-radio-group>
+        </ng-template>
+      </ngx-datatable-column>
+    </ngx-datatable>
+        </md-card-content>
+    </md-card>
+      
+      <md-card>
+      <md-card-title><b>Bilder hinzufügen</b></md-card-title>
+        <md-card-content>
+          <div class="row" style="margin-bottom: 5%;">
+      <div class="fileUpload" style="text-align: center">
+        <span>Bild hinzufügen</span>
+        <input type="file" class="upload" (change)="changeListener($event)" />
+      </div>
+      <div class="fileUpload" style="text-align: center" >
+        <span>Bild hinzufügen</span>
+        <input type="file" class="upload" (change)="changeListener($event)" />
+      </div>
+      <div class="fileUpload" style="text-align: center">
+        <span>Bild hinzufügen</span>
+        <input type="file" class="upload" (change)="changeListener($event)" />
+      </div>
+    </div>
+    </md-card-content>
+    </md-card>
+      <div class="row margin2Bottem">
+        <button md-raised-button md-button-sm class="mr-1" (click)="changeTab('back')">Zurück</button>
+        <button md-raised-button md-button-sm class="mr-1"  (click)="changeTab('next')">Weiter</button>
+    </div>
+  </md-tab>
+  <md-tab label="5. Confirmation" >
+    <md-card style="height:100%;">
+      <md-card-title><b>Zustimmung</b></md-card-title>
+        <md-card-content>
+            <table>
+              <tr>
+                  <td></td>
+                  <td>
+                    <p>
+                      Der Fahrer bestätigt mit seiner Unterschrift, dass er in Besitz der
+vollständigen ADR Ausrüstung und des Beförderungsdokumentes war,
+als er den Ladungsstandort verlassen hat. Er hat auch Kenntnis davon
+genommen, dass es sich um einen Transport gefährlicher Güter
+gemäss den Vorschriften des ADR handelt.
+                    </p>
+                  </td>
+                  <td></td>
+                  <td>
+                    <p>
+                      The driver certifies by his signature that he was in possession of all ADR required equipment and transport document when he left the site/warehouse. The driver confirms with his signature to take notice that the transport in question is subject to ADR regulations and that the loading contains dangerous goods. 
+                     </p>
+                  </td>
+              </tr>
+            </table>
+              <div style="width: 300px;margin-top: 5%; display: inline-block; float: right; margin-right: 35%">
+                <signature-pad (onSave)="onSaveHandler($event)" (onClear)="onClearHandler()" [width]="width" [height]="height" [hideFooter]="noFooter"
+                  [label]="label">
+                </signature-pad>
+                <div style="display:inline-block; text-align:right;margin-left: 26%; margin-top: 8%;"> <b>{{currentDate}}</b></div>
+                <button md-raised-button color="primary" style="width: 100%; margin-top: 30px;"> Prüfung für diesen Transport abschliessen</button>
+            </div>
+        </md-card-content>
+    </md-card>
+  </md-tab>
+</md-tab-group>

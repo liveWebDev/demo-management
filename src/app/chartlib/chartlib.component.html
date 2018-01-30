@@ -1,0 +1,191 @@
+<div  fxLayout="row"  fxLayoutWrap="wrap">
+  <!-- bar -->
+  <div fxFlex.gt-sm="33.33" fxFlex.gt-xs="50" fxFlex="100">
+    <md-card>
+      <md-card-title>Bar</md-card-title>
+      <md-card-subtitle>Basic</md-card-subtitle>
+      <md-card-content>
+        <canvas height="200" baseChart class="chart"
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [options]="barChartOptions"
+          [colors]="lineChartColors"
+          [legend]="barChartLegend"
+          [chartType]="barChartType"></canvas>
+      </md-card-content>
+    </md-card>
+  </div>
+  <!-- bar -->
+  <div fxFlex.gt-sm="33.33" fxFlex.gt-xs="50" fxFlex="100">
+    <md-card>
+      <md-card-title>Bar</md-card-title>
+      <md-card-subtitle>Horizontal</md-card-subtitle>
+      <md-card-content>
+        <canvas height="200" baseChart class="chart"
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [options]="barChartHorizontalOptions"
+          [colors]="lineChartColors"
+          [legend]="barChartLegend"
+          [chartType]="barChartHorizontalType"></canvas>
+      </md-card-content>
+    </md-card>
+  </div>
+  <!-- bar -->
+  <div fxFlex.gt-sm="33.33" fxFlex.gt-xs="50" fxFlex="100">
+    <md-card>
+      <md-card-title>Bar</md-card-title>
+      <md-card-subtitle>Stacked</md-card-subtitle>
+      <md-card-content>
+        <canvas height="200" baseChart class="chart"
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [options]="barChartStackedOptions"
+          [colors]="lineChartColors"
+          [legend]="barChartLegend"
+          [chartType]="barChartType"></canvas>
+      </md-card-content>
+    </md-card>
+  </div>
+  <!-- line -->
+  <div fxFlex.gt-sm="33.33" fxFlex.gt-xs="50" fxFlex="100">
+    <md-card>
+      <md-card-title>Line</md-card-title>
+      <md-card-subtitle>Basic</md-card-subtitle>
+      <md-card-content>
+        <canvas height="200" baseChart class="chart"
+          [datasets]="lineChartData"
+          [labels]="lineChartLabels"
+          [options]="lineChartOptions"
+          [colors]="lineChartColors"
+          [legend]="lineChartLegend"
+          [chartType]="lineChartType"></canvas>
+      </md-card-content>
+    </md-card>
+  </div>
+  <!-- line -->
+  <div fxFlex.gt-sm="33.33" fxFlex.gt-xs="50" fxFlex="100">
+    <md-card>
+      <md-card-title>Line</md-card-title>
+      <md-card-subtitle>Stepped</md-card-subtitle>
+      <md-card-content>
+        <canvas height="200" baseChart class="chart"
+          [datasets]="lineChartSteppedData"
+          [labels]="lineChartLabels"
+          [options]="lineChartOptions"
+          [colors]="lineChartColors"
+          [legend]="lineChartLegend"
+          [chartType]="lineChartType"></canvas>
+      </md-card-content>
+    </md-card>
+  </div>
+  <!-- line -->
+  <div fxFlex.gt-sm="33.33" fxFlex.gt-xs="50" fxFlex="100">
+    <md-card>
+      <md-card-title>Line</md-card-title>
+      <md-card-subtitle>Points</md-card-subtitle>
+      <md-card-content>
+        <canvas height="200" baseChart class="chart"
+          [datasets]="lineChartPointsData"
+          [labels]="lineChartLabels"
+          [options]="lineChartPointsOptions"
+          [colors]="lineChartColors"
+          [legend]="lineChartLegend"
+          [chartType]="lineChartType"></canvas>
+      </md-card-content>
+    </md-card>
+  </div>
+  <!-- mixed -->
+  <div fxFlex.gt-sm="33.33" fxFlex.gt-xs="50" fxFlex="100">
+    <md-card>
+      <md-card-title>Mixed</md-card-title>
+      <md-card-subtitle>Mix different charts</md-card-subtitle>
+      <md-card-content>
+        <canvas height="200" baseChart class="chart"
+          [datasets]="ComboChartData"
+          [labels]="lineChartLabels"
+          [options]="ComboChartOptions"
+          [colors]="lineChartColors"
+          [legend]="lineChartLegend"
+          [chartType]="barChartType"></canvas>
+      </md-card-content>
+    </md-card>
+  </div>
+  <!-- bubble -->
+  <div fxFlex.gt-sm="33.33" fxFlex.gt-xs="50" fxFlex="100">
+    <md-card>
+      <md-card-title>Bubble</md-card-title>
+      <md-card-subtitle>Display three dimensions of data</md-card-subtitle>
+      <md-card-content>
+        <canvas height="200" baseChart class="chart"
+          [datasets]="bubbleChartData"
+          [labels]="lineChartLabels"
+          [options]="lineChartOptions"
+          [colors]="lineChartColors"
+          [legend]="lineChartLegend"
+          [chartType]="bubbleChartType"></canvas>
+      </md-card-content>
+    </md-card>
+  </div>
+  <!-- doughnut -->
+  <div fxFlex.gt-sm="33.33" fxFlex.gt-xs="50" fxFlex="100">
+    <md-card>
+      <md-card-title>Doughnut</md-card-title>
+      <md-card-subtitle>Pie chart with a cutout</md-card-subtitle>
+      <md-card-content>
+        <canvas height="200" baseChart class="chart"
+          [data]="doughnutChartData"
+          [labels]="doughnutChartLabels"
+          [options]="doughnutOptions"
+          [colors]="doughnutChartColors"
+          [chartType]="doughnutChartType"></canvas>
+      </md-card-content>
+    </md-card>
+  </div>
+  <!-- pie -->
+  <div fxFlex.gt-sm="33.33" fxFlex.gt-xs="50" fxFlex="100">
+    <md-card>
+      <md-card-title>Pie</md-card-title>
+      <md-card-subtitle>Without the cutout</md-card-subtitle>
+      <md-card-content>
+        <canvas height="200" baseChart class="chart"
+          [data]="pieChartData"
+          [options]="doughnutOptions"
+          [colors]="doughnutChartColors"
+          [labels]="pieChartLabels"
+          [chartType]="pieChartType"></canvas>
+      </md-card-content>
+    </md-card>
+  </div>
+  <!-- polar -->
+  <div fxFlex.gt-sm="33.33" fxFlex.gt-xs="50" fxFlex="100">
+    <md-card>
+      <md-card-title>Polar area</md-card-title>
+      <md-card-subtitle>Each segment has the same angle</md-card-subtitle>
+      <md-card-content>
+        <canvas height="200" baseChart class="chart"
+          [data]="polarAreaChartData"
+          [options]="doughnutOptions"
+          [colors]="doughnutChartColors"
+          [labels]="polarAreaChartLabels"
+          [legend]="polarAreaLegend"
+          [chartType]="polarAreaChartType"></canvas>
+      </md-card-content>
+    </md-card>
+  </div>
+  <!-- radar -->
+  <div fxFlex.gt-sm="33.33" fxFlex.gt-xs="50" fxFlex="100">
+    <md-card>
+      <md-card-title>Radar</md-card-title>
+      <md-card-subtitle>Multiple data points and the variation between them</md-card-subtitle>
+      <md-card-content>
+        <canvas height="200" baseChart class="chart"
+          [datasets]="radarChartData"
+          [options]="globalChartOptions"
+          [colors]="lineChartColors"
+          [labels]="radarChartLabels"
+          [chartType]="radarChartType"></canvas>
+      </md-card-content>
+    </md-card>
+  </div>
+</div>

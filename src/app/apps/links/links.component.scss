@@ -1,0 +1,117 @@
+.mat-tab-group {
+    margin: 60px;
+}
+
+.md-tab-group .mat-tab-body[_ngcontent-c6] {
+    overflow: hidden !important;
+}
+
+.mat-radio-button {
+    padding: 4px 8px 2px 8px;
+    border-radius: 5px;
+    -moz-border-radius: 40px;
+    -webkit-border-radius: 40px;
+    border-radius: 40px;
+    margin: 0px 3px;
+    background: none;
+    font-size: 15px;
+    /deep/.mat-radio-label {
+        align-items: normal;
+    }
+}
+
+.green {
+    border: 2px solid green;
+    
+    /deep/.mat-radio-outer-circle {
+        border-color: green;
+    }
+    /deep/.mat-radio-inner-circle {
+        background-color: darkgreen;
+    }
+}
+
+.red {
+    border: 2px solid #e74c3c;
+    /deep/.mat-radio-outer-circle {
+        border-color: darkred;
+    }
+    /deep/.mat-radio-inner-circle {
+        background-color: maroon;
+    }
+}
+.grey {
+    border: 2px solid grey;
+    /deep/.mat-radio-outer-circle {
+        border-color: darkgrey;
+    }
+    /deep/.mat-radio-inner-circle {
+        background-color: darkslategray;
+    }
+}
+
+.ngx-datatable.material .datatable-header .datatable-header-cell {
+    text-align: center;
+}
+.button-row {
+    margin-top: 40px;
+    text-align: center;
+    padding: 10px;
+}
+
+.button-row button {
+    width: 180px;
+    height: 40px;
+    font-size: 22px;
+    border: 1px solid black;
+    margin-left: 20px;
+}
+
+.fileUpload {
+    display: inline-block;
+    position: relative;
+    width: 120px;
+    height: 32px;
+    line-height: 32px;
+    border-radius: 2px;
+    font-size: 0.9em;
+    background-color: #fff;
+    color: #646464;
+    
+}
+
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+.zuruck{
+    background: #ecf0f1;
+}
+.weiter{
+    background: #3498db;
+}
+.row {
+    margin-top: 20px;
+    text-align: center;
+}
+// table, th, td {
+//    border: 1px solid black;
+// }
+
+ md-card{
+    margin-top:2% !important;
+ }
+
+ .margin2Top {
+    margin-top:2% !important;
+ }
+ .margin2Bottem{
+    margin-bottom:2% !important;
+ }

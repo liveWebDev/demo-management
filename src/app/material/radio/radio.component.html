@@ -1,0 +1,44 @@
+<md-card>
+  <md-card-title>Radios</md-card-title>
+  <md-card-subtitle>Radio buttons allow the user to select one option from a set</md-card-subtitle>
+  <md-card-content fxLayout="row" fxLayoutWrap="wrap">
+    <div fxFlex.gt-sm="33" fxFlex="100">
+      <p>Basic Example</p>
+      <div fxLayout="column">
+        <md-radio-button name="group1">Option 1</md-radio-button>
+        <md-radio-button name="group1">Option 2</md-radio-button>
+        <md-radio-button name="group1" disabled="true">Option 3 (disabled)</md-radio-button>
+      </div>
+    </div>
+    <div fxFlex.gt-sm="33" fxFlex="100">
+      <p>Dynamic Example</p>
+      <div>
+        <md-radio-group name="my_options" [disabled]="isDisabled" [align]="isAlignEnd ? 'end' : 'start'" fxLayout="column">
+          <md-radio-button value="option_1">Option 1</md-radio-button>
+          <md-radio-button value="option_2">Option 2</md-radio-button>
+          <md-radio-button value="option_3">Option 3</md-radio-button>
+        </md-radio-group>
+        <p>
+          <span>isDisabled: {{isDisabled}}</span>
+          <button (click)="isDisabled=!isDisabled" class="demo-button">
+            Disable buttons
+          </button>
+        </p>
+        <p>
+          <span><md-checkbox [(ngModel)]="isAlignEnd">Align end</md-checkbox></span>
+        </p>
+      </div>
+    </div>
+    <div fxFlex.gt-sm="33" fxFlex="100">
+      <p>Dynamic Example with two-way data-binding</p>
+      <div>
+        <md-radio-group name="more_options" [(ngModel)]="favoriteSeason"  fxLayout="column">
+          <md-radio-button *ngFor="let season of seasonOptions" name="more_options" [value]="season">
+            {{season}}
+          </md-radio-button>
+        </md-radio-group>
+        <p>Your favorite season is: {{favoriteSeason}}</p>
+      </div>
+    </div>
+  </md-card-content>
+</md-card>

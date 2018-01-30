@@ -1,0 +1,30 @@
+<md-card>
+  <md-card-title>Snack Bar</md-card-title>
+  <md-card-subtitle>MdSnackBar is a service, which opens snack bar notifications in the view.</md-card-subtitle>
+  <md-card-content>
+    <p>Message: <md-input-container><input mdInput type="text" [(ngModel)]="message"></md-input-container></p>
+    <md-checkbox [(ngModel)]="action">
+      <p *ngIf="!action">Show button on snack bar</p>
+      <md-input-container *ngIf="action">
+        <input mdInput
+               type="text"
+               class="demo-button-label-input"
+               placeholder="Snack bar action label"
+               [(ngModel)]="actionButtonLabel">
+      </md-input-container>
+    </md-checkbox>
+
+    <md-checkbox [(ngModel)]="setAutoHide">
+      <p *ngIf="!setAutoHide">Auto hide after duration</p>
+      <md-input-container *ngIf="setAutoHide">
+        <input mdInput
+               type="number"
+               class="demo-button-label-input"
+               placeholder="Auto Hide Duration in ms"
+               [(ngModel)]="autoHide">
+      </md-input-container>
+    </md-checkbox>
+    <p><md-checkbox [(ngModel)]="addExtraClass">Add extra class to container</md-checkbox></p>
+    <button md-raised-button (click)="open()">Show Snack bar</button>
+  </md-card-content>
+</md-card>
